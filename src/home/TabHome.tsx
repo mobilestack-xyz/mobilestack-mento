@@ -2,19 +2,26 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import _ from 'lodash'
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { showMessage } from 'src/alert/actions'
 import { AppState } from 'src/app/actions'
 import { appStateSelector, phoneNumberVerifiedSelector } from 'src/app/selectors'
+import TokenIcon, { IconSize } from 'src/components/TokenIcon'
 import { ALERT_BANNER_DURATION, DEFAULT_TESTNET, SHOW_TESTNET_BANNER } from 'src/config'
 import { refreshAllBalances, visitHome } from 'src/home/actions'
+import ArrowVertical from 'src/icons/ArrowVertical'
+import Send from 'src/icons/Send'
 import { importContacts } from 'src/identity/actions'
 import { Screens } from 'src/navigator/Screens'
 import { StackParamList } from 'src/navigator/types'
 import { phoneRecipientCacheSelector } from 'src/recipients/reducer'
 import { useDispatch, useSelector } from 'src/redux/hooks'
 import { initializeSentryUserContext } from 'src/sentry/actions'
+import Colors from 'src/styles/colors'
+import { typeScale } from 'src/styles/fonts'
+import { Spacing } from 'src/styles/styles'
+import { useTokenInfo } from 'src/tokens/hooks'
 import { hasGrantedContactsPermission } from 'src/utils/contacts'
 
 type Props = NativeStackScreenProps<StackParamList, Screens.TabHome>
@@ -74,13 +81,66 @@ function TabHome(_props: Props) {
     }
   }, [appState])
 
-  return <SafeAreaView testID="WalletHome" style={styles.container} edges={[]}></SafeAreaView>
+  const cKESToken = useTokenInfo('celo-mainnet:0x456a3d042c0dbd3db53d5489e98dfb038553b0d0')
+  if (!cKESToken) {
+    return null
+  }
+  return (
+    <SafeAreaView testID="WalletHome" style={styles.container} edges={[]}>
+      <View style={styles.flatCard}>
+        <View style={styles.column}>
+          <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
+          <Text style={styles.labelSemiBoldMedium}>Add cKES</Text>
+        </View>
+      </View>
+      <View style={styles.row}>
+        <View style={[styles.flatCard, styles.flex]}>
+          <View style={styles.column}>
+            <Send />
+            <Text style={styles.labelSemiBoldMedium}>Send Money</Text>
+          </View>
+        </View>
+        <View style={[styles.flatCard, styles.flex]}>
+          <View style={styles.column}>
+            <ArrowVertical />
+            <Text style={styles.labelSemiBoldMedium}>Recieve Money</Text>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
+    paddingHorizontal: Spacing.Regular16,
+    gap: Spacing.Regular16,
+  },
+  flatCard: {
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 12,
+    borderColor: Colors.black,
+    borderWidth: 1,
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: Spacing.Smallest8,
+  },
+  labelSemiBoldMedium: {
+    ...typeScale.labelSemiBoldMedium,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.Regular16,
+  },
+  flex: {
+    flex: 1,
   },
 })
 
