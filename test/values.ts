@@ -122,6 +122,7 @@ export const mockAccountInvite2PrivKey =
   '0xb33eac631fd3a415f3738649db8cad57da78b99ec92cd8f77b76b5dae2ebdf27'
 
 export const mockCusdAddress = '0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1'.toLowerCase()
+export const mockCkesAddress = '0x1e0433c1769271eccf4cff9fddd515eefe6cdf92'.toLowerCase()
 export const mockCeurAddress = '0x10c892A6EC43a53E45D0B916B4b7D383B1b78C0F'.toLowerCase()
 export const mockCeloAddress = '0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9'.toLowerCase()
 export const mockPoofAddress = '0x00400FcbF0816bebB94654259de7273f4A05c762'.toLowerCase()
@@ -133,6 +134,7 @@ export const mockAaveArbUsdcAddress = '0x460b97BD498E1157530AEb3086301d5225b9121
 export const mockArbArbAddress = '0x912CE59144191C1204E64559FE8253a0e49E6548'.toLowerCase()
 
 export const mockCusdTokenId = `celo-alfajores:${mockCusdAddress}`
+export const mockCkesTokenId = `celo-alfajores:${mockCkesAddress}`
 export const mockCeurTokenId = `celo-alfajores:${mockCeurAddress}`
 export const mockCeloTokenId = `celo-alfajores:native`
 export const mockPoofTokenId = `celo-alfajores:${mockPoofAddress}`
