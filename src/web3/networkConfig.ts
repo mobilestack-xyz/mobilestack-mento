@@ -101,6 +101,8 @@ interface NetworkConfig {
   web3AuthVerifier: string
   crossChainExplorerUrl: string
   getWalletTransactionsUrl: string
+  cKESTokenId: string
+  cUSDTokenId: string
 }
 
 const ALCHEMY_ETHEREUM_RPC_URL_STAGING = 'https://eth-sepolia.g.alchemy.com/v2/'
@@ -149,6 +151,9 @@ const CEUR_TOKEN_ID_MAINNET = `${NetworkId['celo-mainnet']}:0xd8763cba276a3738e6
 
 const CREAL_TOKEN_ID_STAGING = `${NetworkId['celo-alfajores']}:0xe4d517785d091d3c54818832db6094bcc2744545`
 const CREAL_TOKEN_ID_MAINNET = `${NetworkId['celo-mainnet']}:0xe8537a3d056da446677b9e9d6c5db704eaab4787`
+
+const CKES_TOKEN_ID_STAGING = `${NetworkId['celo-alfajores']}:0x1e0433c1769271eccf4cff9fddd515eefe6cdf92`
+const CKES_TOKEN_ID_MAINNET = `${NetworkId['celo-mainnet']}:0x456a3d042c0dbd3db53d5489e98dfb038553b0d0`
 
 const ETH_TOKEN_ID_STAGING = `${NetworkId['ethereum-sepolia']}:native`
 const ETH_TOKEN_ID_MAINNET = `${NetworkId['ethereum-mainnet']}:native`
@@ -416,6 +421,8 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     web3AuthVerifier: WEB3_AUTH_VERIFIER,
     crossChainExplorerUrl: CROSS_CHAIN_EXPLORER_URL,
     getWalletTransactionsUrl: GET_WALLET_TRANSACTIONS_ALFAJORES,
+    cKESTokenId: CKES_TOKEN_ID_STAGING,
+    cUSDTokenId: CUSD_TOKEN_ID_STAGING,
   },
   [Testnets.mainnet]: {
     networkId: '42220',
@@ -516,6 +523,8 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     web3AuthVerifier: WEB3_AUTH_VERIFIER,
     crossChainExplorerUrl: CROSS_CHAIN_EXPLORER_URL,
     getWalletTransactionsUrl: GET_WALLET_TRANSACTIONS_MAINNET,
+    cKESTokenId: CKES_TOKEN_ID_MAINNET,
+    cUSDTokenId: CUSD_TOKEN_ID_MAINNET,
   },
 }
 

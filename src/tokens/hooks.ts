@@ -39,6 +39,14 @@ export function useTokenInfoByAddress(tokenAddress?: string | null) {
   return tokenAddress ? tokens[tokenAddress] : undefined
 }
 
+export function useCKES() {
+  return useTokenInfo(networkConfig.cKESTokenId)
+}
+
+export function useCUSD() {
+  return useTokenInfo(networkConfig.cUSDTokenId)
+}
+
 export function useTokensWithUsdValue(networkIds: NetworkId[]) {
   return useSelector((state) => tokensWithUsdValueSelector(state, networkIds))
 }
