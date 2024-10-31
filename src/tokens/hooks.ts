@@ -40,11 +40,11 @@ export function useTokenInfoByAddress(tokenAddress?: string | null) {
 }
 
 export function useCKES() {
-  return useTokenInfo(networkConfig.cKESTokenId)
+  return useTokenInfo(networkConfig.ckesTokenId)
 }
 
 export function useCUSD() {
-  return useTokenInfo(networkConfig.cUSDTokenId)
+  return useTokenInfo(networkConfig.cusdTokenId)
 }
 
 export function useTokensWithUsdValue(networkIds: NetworkId[]) {

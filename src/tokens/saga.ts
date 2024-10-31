@@ -109,7 +109,7 @@ export async function getTokensInfo(): Promise<StoredTokenBalances> {
     )
   }
   const rawTokens = await response.json()
-  const allowedTokenIds = [networkConfig.cKESTokenId, networkConfig.cUSDTokenId]
+  const allowedTokenIds = [networkConfig.ckesTokenId, networkConfig.cusdTokenId]
   return Object.keys(rawTokens)
     .filter((tokenId) => allowedTokenIds.includes(tokenId))
     .reduce((acc, tokenId) => {

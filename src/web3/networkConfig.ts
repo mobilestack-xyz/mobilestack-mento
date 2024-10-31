@@ -92,6 +92,7 @@ interface NetworkConfig {
   ceurTokenId: string
   crealTokenId: string
   celoTokenId: string
+  ckesTokenId: string
   arbUsdcTokenId: string
   spendTokenIds: string[]
   saveContactsUrl: string
@@ -101,8 +102,6 @@ interface NetworkConfig {
   web3AuthVerifier: string
   crossChainExplorerUrl: string
   getWalletTransactionsUrl: string
-  cKESTokenId: string
-  cUSDTokenId: string
 }
 
 const ALCHEMY_ETHEREUM_RPC_URL_STAGING = 'https://eth-sepolia.g.alchemy.com/v2/'
@@ -410,6 +409,7 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     ceurTokenId: CEUR_TOKEN_ID_STAGING,
     crealTokenId: CREAL_TOKEN_ID_STAGING,
     celoTokenId: CELO_TOKEN_ID_STAGING,
+    ckesTokenId: CKES_TOKEN_ID_STAGING,
     arbUsdcTokenId: ARB_USDC_TOKEN_ID_STAGING,
     spendTokenIds: [CUSD_TOKEN_ID_STAGING, CEUR_TOKEN_ID_STAGING],
     saveContactsUrl: SAVE_CONTACTS_ALFAJORES,
@@ -421,8 +421,6 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     web3AuthVerifier: WEB3_AUTH_VERIFIER,
     crossChainExplorerUrl: CROSS_CHAIN_EXPLORER_URL,
     getWalletTransactionsUrl: GET_WALLET_TRANSACTIONS_ALFAJORES,
-    cKESTokenId: CKES_TOKEN_ID_STAGING,
-    cUSDTokenId: CUSD_TOKEN_ID_STAGING,
   },
   [Testnets.mainnet]: {
     networkId: '42220',
@@ -512,6 +510,7 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     ceurTokenId: CEUR_TOKEN_ID_MAINNET,
     crealTokenId: CREAL_TOKEN_ID_MAINNET,
     celoTokenId: CELO_TOKEN_ID_MAINNET,
+    ckesTokenId: CKES_TOKEN_ID_MAINNET,
     arbUsdcTokenId: ARB_USDC_TOKEN_ID_MAINNET,
     spendTokenIds: [CUSD_TOKEN_ID_MAINNET, CEUR_TOKEN_ID_MAINNET],
     saveContactsUrl: SAVE_CONTACTS_MAINNET,
@@ -523,8 +522,6 @@ const networkConfigs: { [testnet: string]: NetworkConfig } = {
     web3AuthVerifier: WEB3_AUTH_VERIFIER,
     crossChainExplorerUrl: CROSS_CHAIN_EXPLORER_URL,
     getWalletTransactionsUrl: GET_WALLET_TRANSACTIONS_MAINNET,
-    cKESTokenId: CKES_TOKEN_ID_MAINNET,
-    cUSDTokenId: CUSD_TOKEN_ID_MAINNET,
   },
 }
 

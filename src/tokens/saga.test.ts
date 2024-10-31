@@ -111,16 +111,16 @@ describe('getTokensInfo', () => {
   it('returns only CKES and CUSD payload if response OK', async () => {
     mockFetch.mockResponseOnce(
       JSON.stringify({
-        [networkConfig.cKESTokenId]: 'CKES token info',
-        [networkConfig.cUSDTokenId]: 'CUSD token info',
+        [networkConfig.ckesTokenId]: 'CKES token info',
+        [networkConfig.cusdTokenId]: 'CUSD token info',
         'celo-alfajores:native': 'CELO token info',
       })
     )
 
     const result = await getTokensInfo()
     expect(result).toEqual({
-      [networkConfig.cKESTokenId]: 'CKES token info',
-      [networkConfig.cUSDTokenId]: 'CUSD token info',
+      [networkConfig.ckesTokenId]: 'CKES token info',
+      [networkConfig.cusdTokenId]: 'CUSD token info',
     })
   })
   it('throws if request does not complete within timeout', async () => {
