@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import _ from 'lodash'
 import React, { useEffect } from 'react'
 import { RefreshControl, RefreshControlProps, SectionList } from 'react-native'
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated'
@@ -70,9 +71,6 @@ function TabActivity(_props: Props) {
         sections={sections}
         keyExtractor={keyExtractor}
         testID="WalletHome/SectionList"
-        // so empty state gets the full height of the screen when pulling down
-        // to refresh
-        style={{ height: '100%' }}
       />
     </SafeAreaView>
   )
