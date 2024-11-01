@@ -8,11 +8,15 @@ import { showMessage } from 'src/alert/actions'
 import { AppState } from 'src/app/actions'
 import { appStateSelector, phoneNumberVerifiedSelector } from 'src/app/selectors'
 import TokenIcon, { IconSize } from 'src/components/TokenIcon'
+import Touchable from 'src/components/Touchable'
 import { ALERT_BANNER_DURATION, DEFAULT_TESTNET, SHOW_TESTNET_BANNER } from 'src/config'
 import { refreshAllBalances, visitHome } from 'src/home/actions'
 import ArrowVertical from 'src/icons/ArrowVertical'
 import Send from 'src/icons/Send'
+import Swap from 'src/icons/Swap'
+import Withdraw from 'src/icons/Withdraw'
 import { importContacts } from 'src/identity/actions'
+import { navigate } from 'src/navigator/NavigationService'
 import { Screens } from 'src/navigator/Screens'
 import { StackParamList } from 'src/navigator/types'
 import { phoneRecipientCacheSelector } from 'src/recipients/reducer'
@@ -82,33 +86,64 @@ function TabHome(_props: Props) {
   }, [appState])
 
   const cKESToken = useTokenInfo('celo-mainnet:0x456a3d042c0dbd3db53d5489e98dfb038553b0d0')
+
+  function onPressAddCKES() {
+    navigate(Screens.FiatExchangeAmount, {
+      tokenId: cKESToken?.tokenId,
+    })
+  }
+
   if (!cKESToken) {
     return null
   }
+
   return (
     <SafeAreaView testID="WalletHome" style={styles.container} edges={[]}>
-      <View style={styles.flatCard}>
+      <FlatCard onPress={onPressAddCKES}>
         <View style={styles.column}>
           <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
           <Text style={styles.labelSemiBoldMedium}>Add cKES</Text>
         </View>
-      </View>
+      </FlatCard>
       <View style={styles.row}>
-        <View style={[styles.flatCard, styles.flex]}>
-          <View style={styles.column}>
-            <Send />
-            <Text style={styles.labelSemiBoldMedium}>Send Money</Text>
-          </View>
+        <View style={styles.flex}>
+          <FlatCard>
+            <View style={styles.column}>
+              <Send />
+              <Text style={styles.labelSemiBoldMedium}>Send Money</Text>
+            </View>
+          </FlatCard>
         </View>
-        <View style={[styles.flatCard, styles.flex]}>
-          <View style={styles.column}>
-            <ArrowVertical />
-            <Text style={styles.labelSemiBoldMedium}>Recieve Money</Text>
-          </View>
+        <View style={styles.flex}>
+          <FlatCard>
+            <View style={styles.column}>
+              <ArrowVertical />
+              <Text style={styles.labelSemiBoldMedium}>Recieve Money</Text>
+            </View>
+          </FlatCard>
         </View>
       </View>
+      <FlatCard>
+        <View style={styles.row}>
+          <Swap />
+          <View style={styles.flex}>
+            <Text style={styles.labelSemiBoldMedium}>Hold US Dollars</Text>
+            <Text style={styles.bodySmallGray}>Swap your cKES for cUSD</Text>
+          </View>
+        </View>
+      </FlatCard>
+      <FlatCard>
+        <View style={styles.row}>
+          <Withdraw />
+          <Text style={styles.labelSemiBoldMedium}>Withdraw From Your Wallet</Text>
+        </View>
+      </FlatCard>
     </SafeAreaView>
   )
+}
+
+function FlatCard({ onPress, ...props }: { children: React.ReactNode; onPress: () => void }) {
+  return <Touchable style={styles.flatCard} onPress={onPress} {...props} />
 }
 
 const styles = StyleSheet.create({
@@ -133,6 +168,10 @@ const styles = StyleSheet.create({
   },
   labelSemiBoldMedium: {
     ...typeScale.labelSemiBoldMedium,
+  },
+  bodySmallGray: {
+    ...typeScale.bodySmall,
+    color: Colors.gray3,
   },
   row: {
     flexDirection: 'row',
