@@ -34,7 +34,11 @@ export const TokenBalanceItem = ({
 
   const Content = (
     <View style={[styles.container, containerStyle]} testID="TokenBalanceItem">
-      <TokenIcon token={token} />
+      <TokenIcon
+        token={token}
+        showNetworkIcon={false}
+        viewStyle={{ borderColor: colors.black, borderWidth: 1, borderRadius: 20 }}
+      />
       <View style={styles.textContainer}>
         <View style={styles.line}>
           <View style={styles.row}>
