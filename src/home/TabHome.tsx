@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { showMessage } from 'src/alert/actions'
+import AppAnalytics from 'src/analytics/AppAnalytics'
+import { TabHomeEvents } from 'src/analytics/Events'
 import { AppState } from 'src/app/actions'
 import { appStateSelector, phoneNumberVerifiedSelector } from 'src/app/selectors'
 import BottomSheet, { BottomSheetModalRefType } from 'src/components/BottomSheet'
@@ -94,6 +96,7 @@ function TabHome(_props: Props) {
   const cUSDToken = useCUSD()
 
   function onPressAddCKES() {
+    AppAnalytics.track(TabHomeEvents.add_ckes)
     if (cUSDToken?.balance.isZero()) {
       !!cKESToken &&
         navigate(Screens.FiatExchangeAmount, {
@@ -107,6 +110,7 @@ function TabHome(_props: Props) {
   }
 
   function onPressSendMoney() {
+    AppAnalytics.track(TabHomeEvents.send_money)
     !!cKESToken &&
       navigate(Screens.SendSelectRecipient, {
         defaultTokenIdOverride: cKESToken.tokenId,
@@ -114,12 +118,14 @@ function TabHome(_props: Props) {
   }
 
   function onPressRecieveMoney() {
+    AppAnalytics.track(TabHomeEvents.receive_money)
     navigate(Screens.QRNavigator, {
       screen: Screens.QRCode,
     })
   }
 
   function onPressHoldUSD() {
+    AppAnalytics.track(TabHomeEvents.hold_usd)
     !!cKESToken &&
       !!cUSDToken &&
       navigate(Screens.SwapScreenWithBack, {
@@ -129,6 +135,7 @@ function TabHome(_props: Props) {
   }
 
   function onPressWithdraw() {
+    AppAnalytics.track(TabHomeEvents.withdraw)
     navigate(Screens.WithdrawSpend)
   }
 
@@ -139,7 +146,7 @@ function TabHome(_props: Props) {
           {!!cKESToken && (
             <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
           )}
-          <Text style={styles.labelSemiBoldMedium}>Add cKES</Text>
+          <Text style={styles.labelSemiBoldMedium}>{t('tabHome.addCKES')}</Text>
         </View>
       </FlatCard>
       <View style={styles.row}>
@@ -147,7 +154,7 @@ function TabHome(_props: Props) {
           <FlatCard testID="FlatCard/SendMoney" onPress={onPressSendMoney}>
             <View style={styles.column}>
               <Send />
-              <Text style={styles.labelSemiBoldMedium}>Send Money</Text>
+              <Text style={styles.labelSemiBoldMedium}>{t('tabHome.sendMoney')}</Text>
             </View>
           </FlatCard>
         </View>
@@ -155,7 +162,7 @@ function TabHome(_props: Props) {
           <FlatCard testID="FlatCard/RecieveMoney" onPress={onPressRecieveMoney}>
             <View style={styles.column}>
               <ArrowVertical />
-              <Text style={styles.labelSemiBoldMedium}>Recieve Money</Text>
+              <Text style={styles.labelSemiBoldMedium}>{t('tabHome.receiveMoney')}</Text>
             </View>
           </FlatCard>
         </View>
@@ -164,15 +171,15 @@ function TabHome(_props: Props) {
         <View style={styles.row}>
           <Swap />
           <View style={styles.flex}>
-            <Text style={styles.labelSemiBoldMedium}>Hold US Dollars</Text>
-            <Text style={styles.bodySmallGray}>Swap your cKES for cUSD</Text>
+            <Text style={styles.labelSemiBoldMedium}>{t('tabHome.holdUSD')}</Text>
+            <Text style={styles.bodySmallGray}>{t('tabHome.swapToUSD')}</Text>
           </View>
         </View>
       </FlatCard>
       <FlatCard testID="FlatCard/Withdraw" onPress={onPressWithdraw}>
         <View style={styles.row}>
           <Withdraw />
-          <Text style={styles.labelSemiBoldMedium}>Withdraw From Your Wallet</Text>
+          <Text style={styles.labelSemiBoldMedium}>{t('tabHome.withdraw')}</Text>
         </View>
       </FlatCard>
       <AddCKESBottomSheet forwardedRef={addCKESBottomSheetRef} />
@@ -197,10 +204,12 @@ function AddCKESBottomSheet({
 }: {
   forwardedRef: React.RefObject<BottomSheetModalRefType>
 }) {
+  const { t } = useTranslation()
   const cKESToken = useCKES()
   const cUSDToken = useCUSD()
 
   function onPressSwapFromCusd() {
+    AppAnalytics.track(TabHomeEvents.add_ckes_from_swap)
     !!cUSDToken &&
       !!cKESToken &&
       navigate(Screens.SwapScreenWithBack, {
@@ -211,6 +220,7 @@ function AddCKESBottomSheet({
   }
 
   function onPressPurchaseCkes() {
+    AppAnalytics.track(TabHomeEvents.add_ckes_from_cash_in)
     !!cKESToken &&
       navigate(Screens.FiatExchangeAmount, {
         tokenId: cKESToken.tokenId,
@@ -221,14 +231,20 @@ function AddCKESBottomSheet({
   }
 
   return (
-    <BottomSheet title="Add cKES" forwardedRef={forwardedRef} testId="AddCKESBottomSheet">
+    <BottomSheet
+      title={t('tabHome.addCKES')}
+      forwardedRef={forwardedRef}
+      testId="AddCKESBottomSheet"
+    >
       <View style={styles.bottomSheetContainer}>
         <FlatCard testID="FlatCard/AddFromCUSD" onPress={onPressSwapFromCusd}>
           <View style={styles.row}>
             <SwapArrows />
             <View style={styles.flex}>
-              <Text style={styles.labelMedium}>From My cUSD Balance</Text>
-              <Text style={styles.bodySmall}>Add cKES by swapping from your cUSD</Text>
+              <Text style={styles.labelMedium}>
+                {t('tabHome.addCKESBottomSheet.addCKESFromCUSD')}
+              </Text>
+              <Text style={styles.bodySmall}>{t('tabHome.addCKESBottomSheet.bySwapping')}</Text>
             </View>
           </View>
         </FlatCard>
@@ -236,9 +252,9 @@ function AddCKESBottomSheet({
           <View style={styles.row}>
             <Add color={Colors.black} />
             <View style={styles.flex}>
-              <Text style={styles.labelMedium}>Purchase cKES</Text>
+              <Text style={styles.labelMedium}>{t('tabHome.addCKESBottomSheet.purchase')}</Text>
               <Text style={styles.bodySmall}>
-                Add cKES by purchasing through one of our trusted providers
+                {t('tabHome.addCKESBottomSheet.purchaseDescription')}
               </Text>
             </View>
           </View>

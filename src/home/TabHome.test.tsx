@@ -136,7 +136,7 @@ describe('TabHome', () => {
     fireEvent.press(getByTestId('FlatCard/AddCKES'))
     expect(getByTestId('AddCKESBottomSheet')).toBeVisible()
   })
-  it('Tapping add from cusd on the bottom sheet opens the swap screen', async () => {
+  it('Tapping add from cUSD on the bottom sheet opens the swap screen', async () => {
     const { getByTestId } = renderScreen()
 
     fireEvent.press(getByTestId('FlatCard/AddCKES'))

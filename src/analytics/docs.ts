@@ -30,6 +30,7 @@ import {
   SendEvents,
   SettingsEvents,
   SwapEvents,
+  TabHomeEvents,
   TokenBottomSheetEvents,
   TransactionDetailsEvents,
   TransactionEvents,
@@ -612,6 +613,13 @@ export const eventDocs: Record<AnalyticsEventType, string> = {
   [EarnEvents.earn_pool_info_tap_safety_details]: `When the user taps the view more/less details on the safety card on the pool info screen`,
   [EarnEvents.earn_select_withdraw_type]: `When a user selects a withdrawal type on the withdraw bottom sheet`,
 
+  [TabHomeEvents.add_ckes]: 'Mento app',
+  [TabHomeEvents.add_ckes_from_cash_in]: 'Mento app',
+  [TabHomeEvents.add_ckes_from_swap]: 'Mento app',
+  [TabHomeEvents.hold_usd]: 'Mento app',
+  [TabHomeEvents.receive_money]: 'Mento app',
+  [TabHomeEvents.send_money]: 'Mento app',
+  [TabHomeEvents.withdraw]: 'Mento app',
   // Legacy event docs
   //  The below events had docs, but are no longer produced by the latest app version.
   // [HomeEvents.home_send]: `when "send" button is pressed from home screen send or request bar (NOT from home screen actions)`,
