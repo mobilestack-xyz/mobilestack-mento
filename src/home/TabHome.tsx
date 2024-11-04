@@ -94,21 +94,23 @@ function TabHome(_props: Props) {
   const cUSDToken = useCUSD()
 
   function onPressAddCKES() {
-    if (cUSDToken.balance.isZero()) {
-      navigate(Screens.FiatExchangeAmount, {
-        tokenId: cKESToken.tokenId,
-        flow: CICOFlow.CashIn,
-        tokenSymbol: cKESToken.symbol,
-      })
+    if (cUSDToken?.balance.isZero()) {
+      !!cKESToken &&
+        navigate(Screens.FiatExchangeAmount, {
+          tokenId: cKESToken.tokenId,
+          flow: CICOFlow.CashIn,
+          tokenSymbol: cKESToken.symbol,
+        })
     } else {
       addCKESBottomSheetRef.current?.snapToIndex(0)
     }
   }
 
   function onPressSendMoney() {
-    navigate(Screens.SendSelectRecipient, {
-      defaultTokenIdOverride: cKESToken.tokenId,
-    })
+    !!cKESToken &&
+      navigate(Screens.SendSelectRecipient, {
+        defaultTokenIdOverride: cKESToken.tokenId,
+      })
   }
 
   function onPressRecieveMoney() {
@@ -118,10 +120,12 @@ function TabHome(_props: Props) {
   }
 
   function onPressHoldUSD() {
-    navigate(Screens.SwapScreenWithBack, {
-      fromTokenId: cKESToken.tokenId,
-      toTokenId: cUSDToken.tokenId,
-    })
+    !!cKESToken &&
+      !!cUSDToken &&
+      navigate(Screens.SwapScreenWithBack, {
+        fromTokenId: cKESToken.tokenId,
+        toTokenId: cUSDToken.tokenId,
+      })
   }
 
   function onPressWithdraw() {
@@ -132,7 +136,9 @@ function TabHome(_props: Props) {
     <SafeAreaView testID="WalletHome" style={styles.container} edges={[]}>
       <FlatCard testID="FlatCard/AddCKES" onPress={onPressAddCKES}>
         <View style={styles.column}>
-          <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
+          {!!cKESToken && (
+            <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
+          )}
           <Text style={styles.labelSemiBoldMedium}>Add cKES</Text>
         </View>
       </FlatCard>
@@ -195,19 +201,22 @@ function AddCKESBottomSheet({
   const cUSDToken = useCUSD()
 
   function onPressSwapFromCusd() {
-    navigate(Screens.SwapScreenWithBack, {
-      fromTokenId: cUSDToken.tokenId,
-      toTokenId: cKESToken.tokenId,
-    })
+    !!cUSDToken &&
+      !!cKESToken &&
+      navigate(Screens.SwapScreenWithBack, {
+        fromTokenId: cUSDToken.tokenId,
+        toTokenId: cKESToken.tokenId,
+      })
     forwardedRef.current?.dismiss()
   }
 
   function onPressPurchaseCkes() {
-    navigate(Screens.FiatExchangeAmount, {
-      tokenId: cKESToken.tokenId,
-      flow: CICOFlow.CashIn,
-      tokenSymbol: cKESToken.symbol,
-    })
+    !!cKESToken &&
+      navigate(Screens.FiatExchangeAmount, {
+        tokenId: cKESToken.tokenId,
+        flow: CICOFlow.CashIn,
+        tokenSymbol: cKESToken.symbol,
+      })
     forwardedRef.current?.dismiss()
   }
 

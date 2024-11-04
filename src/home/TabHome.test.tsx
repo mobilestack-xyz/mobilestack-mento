@@ -3,11 +3,12 @@ import { FetchMock } from 'jest-fetch-mock/types'
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import TabHome from 'src/home/TabHome'
+import { navigate } from 'src/navigator/NavigationService'
 import { RootState } from 'src/redux/reducers'
 import { NetworkId } from 'src/transactions/types'
 import MockedNavigator from 'test/MockedNavigator'
 import { RecursivePartial, createMockStore } from 'test/utils'
-import { mockCeurAddress, mockCeurTokenId, mockCusdAddress, mockCusdTokenId } from 'test/values'
+import { mockCkesAddress, mockCkesTokenId, mockCusdAddress, mockCusdTokenId } from 'test/values'
 
 jest.mock('src/web3/networkConfig', () => {
   const originalModule = jest.requireActual('src/web3/networkConfig')
@@ -35,15 +36,16 @@ const mockBalances = {
         priceUsd: '1',
         priceFetchedAt: Date.now(),
       },
-      [mockCeurTokenId]: {
-        address: mockCeurAddress,
-        tokenId: mockCeurTokenId,
+      [mockCkesTokenId]: {
+        name: 'cKES',
         networkId: NetworkId['celo-alfajores'],
-        symbol: 'cEUR',
+        tokenId: mockCkesTokenId,
+        address: mockCkesAddress,
+        symbol: 'cKES',
         decimals: 18,
+        imageUrl: 'https://example.com/address-metadata/main/assets/tokens/cKES.png',
         balance: '0',
         priceUsd: '1',
-        isFeeCurrency: true,
         priceFetchedAt: Date.now(),
       },
     },
@@ -134,11 +136,76 @@ describe('TabHome', () => {
     fireEvent.press(getByTestId('FlatCard/AddCKES'))
     expect(getByTestId('AddCKESBottomSheet')).toBeVisible()
   })
-  it('Tapping add from cusd on the bottom sheet opens the swap screen', async () => {})
-  it('Tapping purchase cKES on the bottom sheet opens the cash in flow', async () => {})
-  it('Tapping add cKES opens the cash in flow if the user does not have cUSD', async () => {})
-  it('Tapping send money opens the send flow', async () => {})
-  it('Tapping receive money opens the QR code screen', async () => {})
-  it('Tapping hold USD opens the swap screen', async () => {})
-  it('Tapping withdraw opens the withdraw screen', async () => {})
+  it('Tapping add from cusd on the bottom sheet opens the swap screen', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/AddCKES'))
+    fireEvent.press(getByTestId('FlatCard/AddFromCUSD'))
+    expect(navigate).toHaveBeenCalledWith('SwapScreenWithBack', {
+      fromTokenId: mockCusdTokenId,
+      toTokenId: mockCkesTokenId,
+    })
+  })
+  it('Tapping purchase cKES on the bottom sheet opens the cash in flow', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/AddCKES'))
+    fireEvent.press(getByTestId('FlatCard/PurchaseCKES'))
+    expect(navigate).toHaveBeenCalledWith('FiatExchangeAmount', {
+      tokenId: mockCkesTokenId,
+      flow: 'CashIn',
+      tokenSymbol: 'cKES',
+    })
+  })
+  it('Tapping add cKES opens the cash in flow if the user does not have cUSD', async () => {
+    const { getByTestId } = renderScreen({
+      tokens: {
+        tokenBalances: {
+          ...mockBalances.tokens.tokenBalances,
+          [mockCusdTokenId]: {
+            ...mockBalances.tokens.tokenBalances[mockCusdTokenId],
+            balance: '0',
+          },
+        },
+      },
+    })
+
+    fireEvent.press(getByTestId('FlatCard/AddCKES'))
+    expect(navigate).toHaveBeenCalledWith('FiatExchangeAmount', {
+      tokenId: mockCkesTokenId,
+      flow: 'CashIn',
+      tokenSymbol: 'cKES',
+    })
+  })
+  it('Tapping send money opens the send flow', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/SendMoney'))
+    expect(navigate).toHaveBeenCalledWith('SendSelectRecipient', {
+      defaultTokenIdOverride: mockCkesTokenId,
+    })
+  })
+  it('Tapping receive money opens the QR code screen', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/RecieveMoney'))
+    expect(navigate).toHaveBeenCalledWith('QRNavigator', {
+      screen: 'QRCode',
+    })
+  })
+  it('Tapping hold USD opens the swap screen', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/HoldUSD'))
+    expect(navigate).toHaveBeenCalledWith('SwapScreenWithBack', {
+      fromTokenId: mockCkesTokenId,
+      toTokenId: mockCusdTokenId,
+    })
+  })
+  it('Tapping withdraw opens the withdraw screen', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/Withdraw'))
+    expect(navigate).toHaveBeenCalledWith('WithdrawSpend')
+  })
 })
