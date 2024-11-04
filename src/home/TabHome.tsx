@@ -146,7 +146,7 @@ function TabHome(_props: Props) {
           {!!cKESToken && (
             <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
           )}
-          <Text style={styles.labelSemiBoldMedium}>{t('tabHome.addCKES')}</Text>
+          <Text style={styles.ctaText}>{t('tabHome.addCKES')}</Text>
         </View>
       </FlatCard>
       <View style={styles.row}>
@@ -154,7 +154,7 @@ function TabHome(_props: Props) {
           <FlatCard testID="FlatCard/SendMoney" onPress={onPressSendMoney}>
             <View style={styles.column}>
               <Send />
-              <Text style={styles.labelSemiBoldMedium}>{t('tabHome.sendMoney')}</Text>
+              <Text style={styles.ctaText}>{t('tabHome.sendMoney')}</Text>
             </View>
           </FlatCard>
         </View>
@@ -162,7 +162,7 @@ function TabHome(_props: Props) {
           <FlatCard testID="FlatCard/RecieveMoney" onPress={onPressRecieveMoney}>
             <View style={styles.column}>
               <ArrowVertical />
-              <Text style={styles.labelSemiBoldMedium}>{t('tabHome.receiveMoney')}</Text>
+              <Text style={styles.ctaText}>{t('tabHome.receiveMoney')}</Text>
             </View>
           </FlatCard>
         </View>
@@ -171,15 +171,15 @@ function TabHome(_props: Props) {
         <View style={styles.row}>
           <Swap />
           <View style={styles.flex}>
-            <Text style={styles.labelSemiBoldMedium}>{t('tabHome.holdUSD')}</Text>
-            <Text style={styles.bodySmallGray}>{t('tabHome.swapToUSD')}</Text>
+            <Text style={styles.ctaText}>{t('tabHome.holdUSD')}</Text>
+            <Text style={styles.ctaSubText}>{t('tabHome.swapToUSD')}</Text>
           </View>
         </View>
       </FlatCard>
       <FlatCard testID="FlatCard/Withdraw" onPress={onPressWithdraw}>
         <View style={styles.row}>
           <Withdraw />
-          <Text style={styles.labelSemiBoldMedium}>{t('tabHome.withdraw')}</Text>
+          <Text style={styles.ctaText}>{t('tabHome.withdraw')}</Text>
         </View>
       </FlatCard>
       <AddCKESBottomSheet forwardedRef={addCKESBottomSheetRef} />
@@ -196,7 +196,15 @@ function FlatCard({
   onPress: () => void
   testID: string
 }) {
-  return <Touchable style={styles.flatCard} testID={testID} onPress={onPress} {...props} />
+  return (
+    <Touchable
+      borderRadius={Spacing.Small12}
+      style={styles.flatCard}
+      testID={testID}
+      onPress={onPress}
+      {...props}
+    />
+  )
 }
 
 function AddCKESBottomSheet({
@@ -241,10 +249,12 @@ function AddCKESBottomSheet({
           <View style={styles.row}>
             <SwapArrows />
             <View style={styles.flex}>
-              <Text style={styles.labelMedium}>
+              <Text style={styles.bottomSheetCtaText}>
                 {t('tabHome.addCKESBottomSheet.addCKESFromCUSD')}
               </Text>
-              <Text style={styles.bodySmall}>{t('tabHome.addCKESBottomSheet.bySwapping')}</Text>
+              <Text style={styles.bottomSheetCtaSubText}>
+                {t('tabHome.addCKESBottomSheet.bySwapping')}
+              </Text>
             </View>
           </View>
         </FlatCard>
@@ -252,8 +262,10 @@ function AddCKESBottomSheet({
           <View style={styles.row}>
             <Add color={Colors.black} />
             <View style={styles.flex}>
-              <Text style={styles.labelMedium}>{t('tabHome.addCKESBottomSheet.purchase')}</Text>
-              <Text style={styles.bodySmall}>
+              <Text style={styles.bottomSheetCtaText}>
+                {t('tabHome.addCKESBottomSheet.purchase')}
+              </Text>
+              <Text style={styles.bottomSheetCtaSubText}>
                 {t('tabHome.addCKESBottomSheet.purchaseDescription')}
               </Text>
             </View>
@@ -273,8 +285,8 @@ const styles = StyleSheet.create({
   },
   flatCard: {
     backgroundColor: 'white',
-    padding: 16,
-    borderRadius: 12,
+    padding: Spacing.Regular16,
+    borderRadius: Spacing.Small12,
     borderColor: Colors.black,
     borderWidth: 1,
   },
@@ -284,10 +296,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.Smallest8,
   },
-  labelSemiBoldMedium: {
+  ctaText: {
     ...typeScale.labelSemiBoldMedium,
+    color: Colors.black,
   },
-  bodySmallGray: {
+  ctaSubText: {
     ...typeScale.bodySmall,
     color: Colors.gray3,
   },
@@ -303,11 +316,13 @@ const styles = StyleSheet.create({
     gap: Spacing.Regular16,
     paddingVertical: Spacing.Thick24,
   },
-  labelMedium: {
+  bottomSheetCtaText: {
     ...typeScale.labelMedium,
+    color: Colors.black,
   },
-  bodySmall: {
+  bottomSheetCtaSubText: {
     ...typeScale.bodySmall,
+    color: Colors.black,
   },
 })
 
