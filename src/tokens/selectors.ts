@@ -23,7 +23,7 @@ import { NetworkId } from 'src/transactions/types'
 import { Currency } from 'src/utils/currencies'
 import { isVersionBelowMinimum } from 'src/utils/versionCheck'
 import networkConfig from 'src/web3/networkConfig'
-import { isFeeCurrency, sortByUsdBalance } from './utils'
+import { isFeeCurrency, sortByUsdBalance, usdBalance } from './utils'
 
 type TokenBalanceWithPriceUsd = TokenBalance & {
   priceUsd: BigNumber
@@ -432,18 +432,45 @@ export const spendTokensByNetworkIdSelector = createSelector(
   (tokens) => tokens.filter((tokenInfo) => networkConfig.spendTokenIds.includes(tokenInfo.tokenId))
 )
 
-// const tokensWithBalanceOrShowZeroBalanceSelector = createSelector(
-//   (state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds),
-//   (tokens) =>
-//     tokens.filter(
-//       (tokenInfo) => tokenInfo.balance.gt(TOKEN_MIN_AMOUNT) || tokenInfo.showZeroBalance
-//     )
-// )
-
-export const sortedTokensWithBalanceOrShowZeroBalanceSelector = createSelector(
+const tokensWithBalanceOrShowZeroBalanceSelector = createSelector(
   (state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds),
   (tokens) =>
+    tokens.filter(
+      (tokenInfo) => tokenInfo.balance.gt(TOKEN_MIN_AMOUNT) || tokenInfo.showZeroBalance
+    )
+)
+
+export const sortedTokensWithBalanceOrShowZeroBalanceSelector = createSelector(
+  tokensWithBalanceOrShowZeroBalanceSelector,
+  (tokens) =>
     tokens.sort((token1, token2) => {
+      // Sorts by usd balance, then token balance, then zero balance natives by
+      // network id, then zero balance non natives by network id
+      const usdBalanceCompare = usdBalance(token2).comparedTo(usdBalance(token1))
+      if (usdBalanceCompare) {
+        return usdBalanceCompare
+      }
+
+      const balanceCompare = token2.balance.comparedTo(token1.balance)
+      if (balanceCompare) {
+        return balanceCompare
+      }
+
+      if (token1.isNative && !token2.isNative) {
+        return -1
+      }
+      if (!token1.isNative && token2.isNative) {
+        return 1
+      }
+
+      return token1.networkId.localeCompare(token2.networkId)
+    })
+)
+
+export const sortedCkesandCusdSelector = createSelector(
+  (state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds),
+  (tokens) =>
+    tokens.sort((token1, _token2) => {
       // Puts cKES first
       return token1.tokenId === networkConfig.ckesTokenId ? -1 : 1
     })
