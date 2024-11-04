@@ -40,11 +40,19 @@ export function useTokenInfoByAddress(tokenAddress?: string | null) {
 }
 
 export function useCKES() {
-  return useTokenInfo(networkConfig.ckesTokenId)
+  const tokenInfo = useTokenInfo(networkConfig.ckesTokenId)
+  if (!tokenInfo) {
+    throw new Error('CKES token info not found')
+  }
+  return tokenInfo
 }
 
 export function useCUSD() {
-  return useTokenInfo(networkConfig.cusdTokenId)
+  const tokenInfo = useTokenInfo(networkConfig.cusdTokenId)
+  if (!tokenInfo) {
+    throw new Error('CUSD token info not found')
+  }
+  return tokenInfo
 }
 
 export function useTokensWithUsdValue(networkIds: NetworkId[]) {

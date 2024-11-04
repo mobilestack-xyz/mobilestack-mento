@@ -1,19 +1,23 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import _ from 'lodash'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { showMessage } from 'src/alert/actions'
 import { AppState } from 'src/app/actions'
 import { appStateSelector, phoneNumberVerifiedSelector } from 'src/app/selectors'
+import BottomSheet, { BottomSheetModalRefType } from 'src/components/BottomSheet'
 import TokenIcon, { IconSize } from 'src/components/TokenIcon'
 import Touchable from 'src/components/Touchable'
 import { ALERT_BANNER_DURATION, DEFAULT_TESTNET, SHOW_TESTNET_BANNER } from 'src/config'
+import { CICOFlow } from 'src/fiatExchanges/utils'
 import { refreshAllBalances, visitHome } from 'src/home/actions'
 import ArrowVertical from 'src/icons/ArrowVertical'
+import Add from 'src/icons/quick-actions/Add'
 import Send from 'src/icons/Send'
 import Swap from 'src/icons/Swap'
+import SwapArrows from 'src/icons/SwapArrows'
 import Withdraw from 'src/icons/Withdraw'
 import { importContacts } from 'src/identity/actions'
 import { navigate } from 'src/navigator/NavigationService'
@@ -25,7 +29,7 @@ import { initializeSentryUserContext } from 'src/sentry/actions'
 import Colors from 'src/styles/colors'
 import { typeScale } from 'src/styles/fonts'
 import { Spacing } from 'src/styles/styles'
-import { useTokenInfo } from 'src/tokens/hooks'
+import { useCKES, useCUSD } from 'src/tokens/hooks'
 import { hasGrantedContactsPermission } from 'src/utils/contacts'
 
 type Props = NativeStackScreenProps<StackParamList, Screens.TabHome>
@@ -38,6 +42,7 @@ function TabHome(_props: Props) {
   const isNumberVerified = useSelector(phoneNumberVerifiedSelector)
 
   const dispatch = useDispatch()
+  const addCKESBottomSheetRef = useRef<BottomSheetModalRefType>(null)
 
   useEffect(() => {
     dispatch(visitHome())
@@ -85,21 +90,47 @@ function TabHome(_props: Props) {
     }
   }, [appState])
 
-  const cKESToken = useTokenInfo('celo-mainnet:0x456a3d042c0dbd3db53d5489e98dfb038553b0d0')
+  const cKESToken = useCKES()
+  const cUSDToken = useCUSD()
 
   function onPressAddCKES() {
-    navigate(Screens.FiatExchangeAmount, {
-      tokenId: cKESToken?.tokenId,
+    if (cUSDToken.balance.isZero()) {
+      navigate(Screens.FiatExchangeAmount, {
+        tokenId: cKESToken.tokenId,
+        flow: CICOFlow.CashIn,
+        tokenSymbol: cKESToken.symbol,
+      })
+    } else {
+      addCKESBottomSheetRef.current?.snapToIndex(0)
+    }
+  }
+
+  function onPressSendMoney() {
+    navigate(Screens.SendSelectRecipient, {
+      defaultTokenIdOverride: cKESToken.tokenId,
     })
   }
 
-  if (!cKESToken) {
-    return null
+  function onPressRecieveMoney() {
+    navigate(Screens.QRNavigator, {
+      screen: Screens.QRCode,
+    })
+  }
+
+  function onPressHoldUSD() {
+    navigate(Screens.SwapScreenWithBack, {
+      fromTokenId: cKESToken.tokenId,
+      toTokenId: cUSDToken.tokenId,
+    })
+  }
+
+  function onPressWithdraw() {
+    navigate(Screens.WithdrawSpend)
   }
 
   return (
     <SafeAreaView testID="WalletHome" style={styles.container} edges={[]}>
-      <FlatCard onPress={onPressAddCKES}>
+      <FlatCard testID="FlatCard/AddCKES" onPress={onPressAddCKES}>
         <View style={styles.column}>
           <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
           <Text style={styles.labelSemiBoldMedium}>Add cKES</Text>
@@ -107,7 +138,7 @@ function TabHome(_props: Props) {
       </FlatCard>
       <View style={styles.row}>
         <View style={styles.flex}>
-          <FlatCard>
+          <FlatCard testID="FlatCard/SendMoney" onPress={onPressSendMoney}>
             <View style={styles.column}>
               <Send />
               <Text style={styles.labelSemiBoldMedium}>Send Money</Text>
@@ -115,7 +146,7 @@ function TabHome(_props: Props) {
           </FlatCard>
         </View>
         <View style={styles.flex}>
-          <FlatCard>
+          <FlatCard testID="FlatCard/RecieveMoney" onPress={onPressRecieveMoney}>
             <View style={styles.column}>
               <ArrowVertical />
               <Text style={styles.labelSemiBoldMedium}>Recieve Money</Text>
@@ -123,7 +154,7 @@ function TabHome(_props: Props) {
           </FlatCard>
         </View>
       </View>
-      <FlatCard>
+      <FlatCard testID="FlatCard/HoldUSD" onPress={onPressHoldUSD}>
         <View style={styles.row}>
           <Swap />
           <View style={styles.flex}>
@@ -132,18 +163,80 @@ function TabHome(_props: Props) {
           </View>
         </View>
       </FlatCard>
-      <FlatCard>
+      <FlatCard testID="FlatCard/Withdraw" onPress={onPressWithdraw}>
         <View style={styles.row}>
           <Withdraw />
           <Text style={styles.labelSemiBoldMedium}>Withdraw From Your Wallet</Text>
         </View>
       </FlatCard>
+      <AddCKESBottomSheet forwardedRef={addCKESBottomSheetRef} />
     </SafeAreaView>
   )
 }
 
-function FlatCard({ onPress, ...props }: { children: React.ReactNode; onPress: () => void }) {
-  return <Touchable style={styles.flatCard} onPress={onPress} {...props} />
+function FlatCard({
+  onPress,
+  testID,
+  ...props
+}: {
+  children: React.ReactNode
+  onPress: () => void
+  testID: string
+}) {
+  return <Touchable style={styles.flatCard} testID={testID} onPress={onPress} {...props} />
+}
+
+function AddCKESBottomSheet({
+  forwardedRef,
+}: {
+  forwardedRef: React.RefObject<BottomSheetModalRefType>
+}) {
+  const cKESToken = useCKES()
+  const cUSDToken = useCUSD()
+
+  function onPressSwapFromCusd() {
+    navigate(Screens.SwapScreenWithBack, {
+      fromTokenId: cUSDToken.tokenId,
+      toTokenId: cKESToken.tokenId,
+    })
+    forwardedRef.current?.dismiss()
+  }
+
+  function onPressPurchaseCkes() {
+    navigate(Screens.FiatExchangeAmount, {
+      tokenId: cKESToken.tokenId,
+      flow: CICOFlow.CashIn,
+      tokenSymbol: cKESToken.symbol,
+    })
+    forwardedRef.current?.dismiss()
+  }
+
+  return (
+    <BottomSheet title="Add cKES" forwardedRef={forwardedRef} testId="AddCKESBottomSheet">
+      <View style={styles.bottomSheetContainer}>
+        <FlatCard testID="FlatCard/AddFromCUSD" onPress={onPressSwapFromCusd}>
+          <View style={styles.row}>
+            <SwapArrows />
+            <View style={styles.flex}>
+              <Text style={styles.labelMedium}>From My cUSD Balance</Text>
+              <Text style={styles.bodySmall}>Add cKES by swapping from your cUSD</Text>
+            </View>
+          </View>
+        </FlatCard>
+        <FlatCard testID="FlatCard/PurchaseCKES" onPress={onPressPurchaseCkes}>
+          <View style={styles.row}>
+            <Add color={Colors.black} />
+            <View style={styles.flex}>
+              <Text style={styles.labelMedium}>Purchase cKES</Text>
+              <Text style={styles.bodySmall}>
+                Add cKES by purchasing through one of our trusted providers
+              </Text>
+            </View>
+          </View>
+        </FlatCard>
+      </View>
+    </BottomSheet>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -180,6 +273,16 @@ const styles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  bottomSheetContainer: {
+    gap: Spacing.Regular16,
+    paddingVertical: Spacing.Thick24,
+  },
+  labelMedium: {
+    ...typeScale.labelMedium,
+  },
+  bodySmall: {
+    ...typeScale.bodySmall,
   },
 })
 

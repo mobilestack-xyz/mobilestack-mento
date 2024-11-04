@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react-native'
+import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { FetchMock } from 'jest-fetch-mock/types'
 import * as React from 'react'
 import { Provider } from 'react-redux'
@@ -127,4 +127,18 @@ describe('TabHome', () => {
       )
     )
   })
+
+  it('Tapping add cKES opens the bottom sheet if the user has cUSD', async () => {
+    const { getByTestId } = renderScreen()
+
+    fireEvent.press(getByTestId('FlatCard/AddCKES'))
+    expect(getByTestId('AddCKESBottomSheet')).toBeVisible()
+  })
+  it('Tapping add from cusd on the bottom sheet opens the swap screen', async () => {})
+  it('Tapping purchase cKES on the bottom sheet opens the cash in flow', async () => {})
+  it('Tapping add cKES opens the cash in flow if the user does not have cUSD', async () => {})
+  it('Tapping send money opens the send flow', async () => {})
+  it('Tapping receive money opens the QR code screen', async () => {})
+  it('Tapping hold USD opens the swap screen', async () => {})
+  it('Tapping withdraw opens the withdraw screen', async () => {})
 })
