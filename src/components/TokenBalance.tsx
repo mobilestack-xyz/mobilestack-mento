@@ -128,7 +128,11 @@ export function HideBalanceButton({ hideBalance }: { hideBalance: boolean }) {
     dispatch(toggleHideBalances())
   }
   return (
-    <Touchable onPress={eyeIconOnPress} hitSlop={variables.iconHitslop}>
+    <Touchable
+      onPress={eyeIconOnPress}
+      hitSlop={variables.iconHitslop}
+      testID={'HideBalanceButton'}
+    >
       {hideBalance ? <HiddenEyeIcon /> : <EyeIcon />}
     </Touchable>
   )
