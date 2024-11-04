@@ -80,15 +80,7 @@ function TransactionFeedItemBaseImage(props: Props) {
       )
     }
 
-    return (
-      <ContactCircle
-        recipient={props.recipient}
-        size={AVATAR_SIZE}
-        backgroundColor={Colors.white}
-        borderColor={Colors.black}
-        foregroundColor={Colors.black}
-      />
-    )
+    return <ContactCircle recipient={props.recipient} size={AVATAR_SIZE} />
   }
 
   if (
