@@ -14,19 +14,16 @@ import { typeScale } from 'src/styles/fonts'
 import { useTotalTokenBalance } from 'src/tokens/hooks'
 import { sortedTokensWithBalanceOrShowZeroBalanceSelector } from 'src/tokens/selectors'
 import { TokenBalanceItem } from 'src/tokens/TokenBalanceItem'
-import { getTokenAnalyticsProps } from 'src/tokens/utils'
-import { NetworkId } from 'src/transactions/types'
+import { getSupportedNetworkIdsForTokenBalances, getTokenAnalyticsProps } from 'src/tokens/utils'
 
 function TabWallet() {
   const hideWalletBalances = useSelector(hideWalletBalancesSelector)
   const localCurrencySymbol = useSelector(getLocalCurrencySymbol)
   const { decimalSeparator } = getNumberFormatSettings()
 
+  const supportedNetworkIds = getSupportedNetworkIdsForTokenBalances()
   const tokens = useSelector((state) =>
-    sortedTokensWithBalanceOrShowZeroBalanceSelector(state, [
-      NetworkId['celo-mainnet'],
-      NetworkId['celo-alfajores'],
-    ])
+    sortedTokensWithBalanceOrShowZeroBalanceSelector(state, supportedNetworkIds)
   )
   const totalTokenBalanceLocal = useTotalTokenBalance()
   const balanceDisplay = hideWalletBalances
