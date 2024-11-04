@@ -32,7 +32,7 @@ import {
 } from 'src/transactions/types'
 import Logger from 'src/utils/Logger'
 import { gql } from 'src/utils/gql'
-import config from 'src/web3/networkConfig'
+import { default as config, default as networkConfig } from 'src/web3/networkConfig'
 import { walletAddressSelector } from 'src/web3/selectors'
 
 const MIN_NUM_TRANSACTIONS = 10
@@ -541,12 +541,44 @@ async function queryChainTransactionsFeed({
       tokenTransactionsV3: {
         ...body.data.tokenTransactionsV3,
         transactions:
-          body.data.tokenTransactionsV3?.transactions.map((tx) => {
+          body.data.tokenTransactionsV3?.transactions.filter(isTransactionEligible).map((tx) => {
             return { ...tx, networkId }
           }) ?? [],
       },
     },
   }
+}
+
+// Filter out transactions that are not eligible to be shown in the home feed
+// Ideally should be done in the blockchain-api but for now we do it here
+export function isTransactionEligible(transaction: TokenTransaction) {
+  const tokenIds = []
+
+  switch (transaction.type) {
+    case TokenTransactionTypeV2.Sent:
+    case TokenTransactionTypeV2.Received:
+      tokenIds.push(transaction.amount.tokenId)
+      break
+    case TokenTransactionTypeV2.SwapTransaction:
+      tokenIds.push(transaction.inAmount.tokenId, transaction.outAmount.tokenId)
+      break
+    case TokenTransactionTypeV2.Approval:
+      tokenIds.push(transaction.tokenId)
+      break
+    case TokenTransactionTypeV2.EarnSwapDeposit:
+    case TokenTransactionTypeV2.EarnClaimReward:
+    case TokenTransactionTypeV2.EarnDeposit:
+    case TokenTransactionTypeV2.EarnWithdraw:
+    case TokenTransactionTypeV2.NftSent:
+    case TokenTransactionTypeV2.NftReceived:
+    case TokenTransactionTypeV2.CrossChainSwapTransaction:
+    default:
+      return false
+  }
+
+  // TODO(satish): find a shared place to store the allowed tokenIds
+  const allowedTokenIds = [networkConfig.ckesTokenId, networkConfig.cusdTokenId]
+  return tokenIds.every((tokenId) => allowedTokenIds.includes(tokenId))
 }
 
 export const TRANSACTIONS_QUERY = gql`
