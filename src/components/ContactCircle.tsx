@@ -28,8 +28,6 @@ function ContactCircle({
   borderColor = Colors.black,
   DefaultIcon = ({ foregroundColor }) => <User color={foregroundColor} />,
 }: Props) {
-  const iconBackgroundColor = backgroundColor
-
   const renderThumbnail = () => {
     if (recipient.thumbnailPath) {
       return (
@@ -69,7 +67,7 @@ function ContactCircle({
         style={[
           styles.icon,
           {
-            backgroundColor: iconBackgroundColor,
+            backgroundColor,
             height: iconSize,
             width: iconSize,
             borderRadius: iconSize / 2,
