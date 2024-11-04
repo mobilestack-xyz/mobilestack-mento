@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'src/redux/hooks'
 import { AppDispatch, store } from 'src/redux/store'
 import { getMultichainFeatures } from 'src/statsig/index'
 import { vibrateSuccess } from 'src/styles/hapticFeedback'
+import { ALLOWED_TOKEN_IDS } from 'src/tokens/constants'
 import { tokensByIdSelector } from 'src/tokens/selectors'
 import { getSupportedNetworkIdsForSwap } from 'src/tokens/utils'
 import {
@@ -32,7 +33,7 @@ import {
 } from 'src/transactions/types'
 import Logger from 'src/utils/Logger'
 import { gql } from 'src/utils/gql'
-import { default as config, default as networkConfig } from 'src/web3/networkConfig'
+import { default as config } from 'src/web3/networkConfig'
 import { walletAddressSelector } from 'src/web3/selectors'
 
 const MIN_NUM_TRANSACTIONS = 10
@@ -576,9 +577,7 @@ export function isTransactionEligible(transaction: TokenTransaction) {
       return false
   }
 
-  // TODO(satish): find a shared place to store the allowed tokenIds
-  const allowedTokenIds = [networkConfig.ckesTokenId, networkConfig.cusdTokenId]
-  return tokenIds.every((tokenId) => allowedTokenIds.includes(tokenId))
+  return tokenIds.every((tokenId) => ALLOWED_TOKEN_IDS.has(tokenId))
 }
 
 export const TRANSACTIONS_QUERY = gql`
