@@ -467,7 +467,7 @@ export const sortedTokensWithBalanceOrShowZeroBalanceSelector = createSelector(
     })
 )
 
-export const sortedCkesandCusdSelector = createSelector(
+export const cKESFirstTokensListSelector = createSelector(
   (state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds),
   (tokens) =>
     tokens.sort((token1, _token2) => {

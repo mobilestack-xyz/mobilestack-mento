@@ -14,7 +14,7 @@ import Colors from 'src/styles/colors'
 import { typeScale } from 'src/styles/fonts'
 import { Spacing } from 'src/styles/styles'
 import { useTotalTokenBalance } from 'src/tokens/hooks'
-import { sortedCkesandCusdSelector } from 'src/tokens/selectors'
+import { cKESFirstTokensListSelector } from 'src/tokens/selectors'
 import { TokenBalanceItem } from 'src/tokens/TokenBalanceItem'
 import { getSupportedNetworkIdsForTokenBalances, getTokenAnalyticsProps } from 'src/tokens/utils'
 
@@ -24,7 +24,7 @@ function TabWallet() {
   const { decimalSeparator } = getNumberFormatSettings()
 
   const supportedNetworkIds = getSupportedNetworkIdsForTokenBalances()
-  const tokens = useSelector((state) => sortedCkesandCusdSelector(state, supportedNetworkIds))
+  const tokens = useSelector((state) => cKESFirstTokensListSelector(state, supportedNetworkIds))
   const totalTokenBalanceLocal = useTotalTokenBalance()
   const balanceDisplay = hideWalletBalances
     ? `XX${decimalSeparator}XX`
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: Spacing.Smallest8,
     marginBottom: Spacing.Large32,
   },
   totalBalance: {
