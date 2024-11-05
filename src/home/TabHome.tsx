@@ -134,7 +134,7 @@ function TabHome(_props: Props) {
       })
   }
 
-  const cashOutTokens = useCashOutTokens()
+  const cashOutTokens = useCashOutTokens(true)
 
   function onPressWithdraw() {
     const numAvailableCashOutTokens = cashOutTokens.filter(

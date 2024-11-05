@@ -413,8 +413,13 @@ export const cashInTokensByNetworkIdSelector = createSelector(
 )
 
 export const cashOutTokensByNetworkIdSelector = createSelector(
-  [(state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds)],
-  (tokens) => tokens.filter((tokenInfo) => tokenInfo.isCashOutEligible)
+  [
+    (state: RootState, networkIds: NetworkId[]) => tokensListSelector(state, networkIds),
+    (_state: RootState, _networkIds: NetworkId[], showZeroBalanceTokens: boolean) =>
+      showZeroBalanceTokens,
+  ],
+  (tokens, showZeroBalanceTokens) =>
+    tokens.filter((tokenInfo) => showZeroBalanceTokens || tokenInfo.isCashOutEligible)
 )
 
 export const spendTokensByNetworkIdSelector = createSelector(

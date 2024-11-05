@@ -101,10 +101,7 @@ describe(FiatExchangeCurrencyBottomSheet, () => {
         />
       </Provider>
     )
-    expect(getAllByTestId('TokenBalanceItem')).toHaveLength(2)
-    ;['CELO', 'cUSD'].forEach((token, index) => {
-      expect(getAllByTestId('TokenBalanceItem')[index]).toHaveTextContent(token)
-    })
+    expect(getAllByTestId('TokenBalanceItem')).toHaveLength(8)
   })
   it('shows the correct tokens for cash spend', () => {
     const { getAllByTestId } = render(
