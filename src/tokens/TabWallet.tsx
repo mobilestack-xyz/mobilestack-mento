@@ -38,7 +38,7 @@ function TabWallet() {
         </Text>
         <HideBalanceButton hideBalance={hideWalletBalances} />
       </View>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         {tokens.map((token, index) => (
           <TokenBalanceItem
             token={token}
@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.Smallest8,
-    marginBottom: Spacing.Large32,
   },
   totalBalance: {
     ...typeScale.titleLarge,
     color: Colors.black,
   },
+  contentContainerStyle: { marginTop: Spacing.Large32 },
   tokenBalanceItemContainer: {
     marginHorizontal: Spacing.Thick24,
   },

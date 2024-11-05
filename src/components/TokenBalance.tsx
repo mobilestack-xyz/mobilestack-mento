@@ -132,6 +132,7 @@ export function HideBalanceButton({ hideBalance }: { hideBalance: boolean }) {
       onPress={eyeIconOnPress}
       hitSlop={variables.iconHitslop}
       testID={'HideBalanceButton'}
+      borderRadius={30}
     >
       {hideBalance ? <HiddenEyeIcon /> : <EyeIcon />}
     </Touchable>
