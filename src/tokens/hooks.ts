@@ -121,11 +121,9 @@ export function useCashInTokens() {
   return useSelector((state) => cashInTokensByNetworkIdSelector(state, networkIdsForCico))
 }
 
-export function useCashOutTokens(showZeroBalanceTokens: boolean = false) {
+export function useCashOutTokens() {
   const networkIdsForCico = getMultichainFeatures().showCico
-  return useSelector((state) =>
-    cashOutTokensByNetworkIdSelector(state, networkIdsForCico, showZeroBalanceTokens)
-  )
+  return useSelector((state) => cashOutTokensByNetworkIdSelector(state, networkIdsForCico))
 }
 
 export function useSpendTokens() {
