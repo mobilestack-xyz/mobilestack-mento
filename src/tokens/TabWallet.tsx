@@ -1,7 +1,6 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { getNumberFormatSettings } from 'react-native-localize'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import AppAnalytics from 'src/analytics/AppAnalytics'
 import { AssetsEvents } from 'src/analytics/Events'
 import { hideWalletBalancesSelector } from 'src/app/selectors'
@@ -30,7 +29,7 @@ function TabWallet() {
     ? `XX${decimalSeparator}XX`
     : totalTokenBalanceLocal?.toFormat(2)
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <View style={styles.container}>
       <View style={styles.row}>
         <Text style={styles.totalBalance} testID={'TotalTokenBalance'}>
           {!hideWalletBalances && localCurrencySymbol}
@@ -56,7 +55,7 @@ function TabWallet() {
           />
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }
 

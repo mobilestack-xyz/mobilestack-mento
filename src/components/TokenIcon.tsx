@@ -63,10 +63,10 @@ interface Props {
 
 export default function TokenIcon({
   token,
-  viewStyle,
+  viewStyle = styles.viewStyle,
   testID,
   size = IconSize.MEDIUM,
-  showNetworkIcon = true,
+  showNetworkIcon = false,
 }: Props) {
   const { tokenImageSize, networkImageSize, networkImagePosition, tokenTextSize } =
     IconSizeToStyle[size]
@@ -144,4 +144,5 @@ const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
   },
+  viewStyle: { borderColor: colors.black, borderWidth: 1, borderRadius: 20 },
 })
