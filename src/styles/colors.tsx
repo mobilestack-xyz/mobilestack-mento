@@ -24,7 +24,6 @@ enum Colors {
   error = '#EA6042',
   errorDark = '#C93717',
   errorLight = '#FBF2F0',
-  periwinkle = '#869AEF',
 
   // shadows
   softShadow = 'rgba(156, 164, 169, 0.4)',
