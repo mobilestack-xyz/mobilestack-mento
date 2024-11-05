@@ -69,15 +69,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: Spacing.Smallest8,
+    marginTop: Spacing.Smallest8,
   },
   totalBalance: {
     ...typeScale.titleLarge,
     color: Colors.black,
   },
   contentContainerStyle: { marginTop: Spacing.Large32 },
-  tokenBalanceItemContainer: {
-    marginHorizontal: Spacing.Thick24,
-  },
 })
 
 export default TabWallet
