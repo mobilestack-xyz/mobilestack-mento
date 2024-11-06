@@ -63,7 +63,7 @@ interface Props {
 
 export default function TokenIcon({
   token,
-  viewStyle = styles.viewStyle,
+  viewStyle,
   testID,
   size = IconSize.MEDIUM,
   showNetworkIcon = false,
@@ -72,7 +72,7 @@ export default function TokenIcon({
     IconSizeToStyle[size]
 
   return (
-    <View testID={testID} style={viewStyle}>
+    <View testID={testID} style={[styles.defaultViewStyle, viewStyle]}>
       {token.imageUrl ? (
         <FastImage
           source={{
@@ -144,5 +144,5 @@ const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
   },
-  viewStyle: { borderColor: colors.black, borderWidth: 1, borderRadius: 20 },
+  defaultViewStyle: { borderColor: colors.black, borderWidth: 1, borderRadius: 20 },
 })
