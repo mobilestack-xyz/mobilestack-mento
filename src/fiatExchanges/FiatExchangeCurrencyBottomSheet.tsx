@@ -16,67 +16,6 @@ import { CICOFlow, FiatExchangeFlow } from './utils'
 
 type Props = BottomSheetScreenProps<StackParamList, Screens.FiatExchangeCurrencyBottomSheet>
 
-// function useFilterChips(
-//   flow: FiatExchangeFlow,
-//   preselectedNetworkId?: NetworkId
-// ): FilterChip<TokenBalance>[] {
-//   const { t } = useTranslation()
-//   const feeCurrencies = useSelector(allFeeCurrenciesSelector)
-//   const feeTokenIds = useMemo(
-//     () => new Set(feeCurrencies.map((currency) => currency.tokenId)),
-//     [feeCurrencies]
-//   )
-
-//   const showUKCompliantVariant = getFeatureGate(StatsigFeatureGates.SHOW_UK_COMPLIANT_VARIANT)
-
-//   if (
-//     flow !== FiatExchangeFlow.CashIn ||
-//     !getFeatureGate(StatsigFeatureGates.SHOW_CASH_IN_TOKEN_FILTERS)
-//   ) {
-//     return []
-//   }
-//   const supportedNetworkIds = getMultichainFeatures().showCico
-//   // reuse the same popular tokens as for swap
-//   const popularTokenIds: string[] = getDynamicConfigParams(
-//     DynamicConfigs[StatsigDynamicConfigs.SWAP_CONFIG]
-//   ).popularTokenIds
-
-//   return [
-//     ...(showUKCompliantVariant
-//       ? []
-//       : [
-//           {
-//             id: 'popular',
-//             name: t('tokenBottomSheet.filters.popular'),
-//             filterFn: (token: TokenBalance) => popularTokenIds.includes(token.tokenId),
-//             isSelected: false,
-//           },
-//         ]),
-//     {
-//       id: 'stablecoins',
-//       name: t('tokenBottomSheet.filters.stablecoins'),
-//       filterFn: (token: TokenBalance) => !!token.isStableCoin,
-//       isSelected: false,
-//     },
-//     {
-//       id: 'gas-tokens',
-//       name: t('tokenBottomSheet.filters.gasTokens'),
-//       filterFn: (token: TokenBalance) => feeTokenIds.has(token.tokenId),
-//       isSelected: false,
-//     },
-//     {
-//       id: 'network-ids',
-//       name: t('tokenBottomSheet.filters.selectNetwork'),
-//       filterFn: (token: TokenBalance, selected?: NetworkId[]) => {
-//         return !!selected && selected.includes(token.networkId)
-//       },
-//       isSelected: !!preselectedNetworkId,
-//       allNetworkIds: supportedNetworkIds,
-//       selectedNetworkIds: preselectedNetworkId ? [preselectedNetworkId] : supportedNetworkIds,
-//     },
-//   ]
-// }
-
 function FiatExchangeCurrencyBottomSheet({ route }: Props) {
   const { t } = useTranslation()
   const dispatch = useDispatch()
@@ -92,7 +31,7 @@ function FiatExchangeCurrencyBottomSheet({ route }: Props) {
         : spendTokens
 
   const tokenList = useMemo(() => [...unsortedTokenList].sort(sortCicoTokens), [unsortedTokenList])
-  const filterChips: FilterChip<TokenBalance>[] = [] // useFilterChips(flow, networkId)
+  const filterChips: FilterChip<TokenBalance>[] = []
 
   // Fetch FiatConnect providers silently in the background early in the CICO funnel
   useEffect(() => {
