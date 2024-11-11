@@ -137,14 +137,13 @@ function TabHome(_props: Props) {
   const cashOutTokens = useCashOutTokens(true)
 
   function onPressWithdraw() {
-    const numAvailableCashOutTokens = cashOutTokens.filter(
-      (token) => !token.balance.isZero()
-    ).length
+    const availableCashOutTokens = cashOutTokens.filter((token) => !token.balance.isZero())
+    const numAvailableCashOutTokens = availableCashOutTokens.length
     if (
       numAvailableCashOutTokens === 1 ||
       (numAvailableCashOutTokens === 0 && cashOutTokens.length === 1)
     ) {
-      const { tokenId, symbol } = cashOutTokens[0]
+      const { tokenId, symbol } = availableCashOutTokens[0]
       navigate(Screens.FiatExchangeAmount, {
         tokenId,
         flow: CICOFlow.CashOut,
