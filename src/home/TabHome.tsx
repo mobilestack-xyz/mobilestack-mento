@@ -143,7 +143,8 @@ function TabHome(_props: Props) {
       numAvailableCashOutTokens === 1 ||
       (numAvailableCashOutTokens === 0 && cashOutTokens.length === 1)
     ) {
-      const { tokenId, symbol } = availableCashOutTokens[0]
+      const { tokenId, symbol } =
+        numAvailableCashOutTokens === 1 ? availableCashOutTokens[0] : cashOutTokens[0]
       navigate(Screens.FiatExchangeAmount, {
         tokenId,
         flow: CICOFlow.CashOut,
