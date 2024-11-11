@@ -1,7 +1,6 @@
 import { BottomSheetScreenProps } from '@th3rdwave/react-navigation-bottom-sheet'
 import React, { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FilterChip } from 'src/components/FilterChipsCarousel'
 import TokenBottomSheet, { TokenPickerOrigin } from 'src/components/TokenBottomSheet'
 import { fetchFiatConnectProviders } from 'src/fiatconnect/slice'
 import { navigate } from 'src/navigator/NavigationService'
@@ -31,7 +30,6 @@ function FiatExchangeCurrencyBottomSheet({ route }: Props) {
         : spendTokens
 
   const tokenList = useMemo(() => [...unsortedTokenList].sort(sortCicoTokens), [unsortedTokenList])
-  const filterChips: FilterChip<TokenBalance>[] = []
 
   // Fetch FiatConnect providers silently in the background early in the CICO funnel
   useEffect(() => {
@@ -66,7 +64,6 @@ function FiatExchangeCurrencyBottomSheet({ route }: Props) {
             ? TokenPickerOrigin.CashOut
             : TokenPickerOrigin.Spend
       }
-      filterChips={filterChips}
     />
   )
 }
