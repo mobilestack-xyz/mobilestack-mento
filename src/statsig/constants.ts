@@ -46,7 +46,7 @@ export const DynamicConfigs = {
       showSwap: [networkConfig.defaultNetworkId],
       showTransfers: [networkConfig.defaultNetworkId],
       showWalletConnect: [networkConfig.defaultNetworkId],
-      showApprovalTxsInHomefeed: [] as NetworkId[],
+      showApprovalTxsInHomefeed: [networkConfig.defaultNetworkId],
       showNfts: [networkConfig.defaultNetworkId],
       showPositions: [networkConfig.defaultNetworkId],
       showShortcuts: [networkConfig.defaultNetworkId],

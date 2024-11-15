@@ -11,7 +11,6 @@ import {
   StatsigMultiNetworkDynamicConfig,
   StatsigParameter,
 } from 'src/statsig/types'
-import { NetworkId } from 'src/transactions/types'
 import Logger from 'src/utils/Logger'
 import { walletAddressSelector } from 'src/web3/selectors'
 import { EvaluationReason } from 'statsig-js'
@@ -89,14 +88,8 @@ function _getDynamicConfigParams<T extends Record<string, StatsigParameter>>({
 }
 
 export function getMultichainFeatures() {
-  const multichainParams = _getDynamicConfigParams(
-    DynamicConfigs[StatsigMultiNetworkDynamicConfig.MULTI_CHAIN_FEATURES]
-  )
-  const filteredParams = {} as { [key: string]: NetworkId[] }
-  Object.entries(multichainParams).forEach(([key, value]) => {
-    filteredParams[key] = value.filter((networkId) => networkId in NetworkId)
-  })
-  return filteredParams
+  // just use defaults, which is celo
+  return DynamicConfigs[StatsigMultiNetworkDynamicConfig.MULTI_CHAIN_FEATURES].defaultValues
 }
 
 // Cannot be used to retrieve dynamic config for multichain features
