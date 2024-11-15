@@ -842,7 +842,7 @@
     "titleGuided": "Welcome to {{appName}}!\nLet’s create your crypto wallet.",
     "createAccount": "Create new account",
     "restoreAccount": "Restore my account",
-    "createNewWallet": "Create new account",
+    "createNewWallet": "Create new wallet",
     "restoreWallet": "Restore wallet",
     "hasWallet": "I already have a wallet",
     "hasWalletV1_88": "I have a wallet",
