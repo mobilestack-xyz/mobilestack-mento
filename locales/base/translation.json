@@ -107,7 +107,7 @@
   },
   "signInWithEmail": {
     "title": "Sign in with email",
-    "subtitle": "Remember this email address & password. You will be prompted to sign in again if you ever lose your wallet.",
+    "subtitle": "Sign in with your email to set it up as a backup. You will be prompted to sign in again if you ever lose your wallet.",
     "subtitleRestore": "Sign in with the email you used to set up your wallet backup.",
     "google": "Sign in with Google",
     "apple": "Sign in with Apple",
