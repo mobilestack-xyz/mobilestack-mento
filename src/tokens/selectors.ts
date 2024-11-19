@@ -419,7 +419,11 @@ export const cashOutTokensByNetworkIdSelector = createSelector(
       showZeroBalanceTokens,
   ],
   (tokens, showZeroBalanceTokens) =>
-    tokens.filter((tokenInfo) => showZeroBalanceTokens || tokenInfo.isCashOutEligible)
+    tokens.filter(
+      (tokenInfo) =>
+        (showZeroBalanceTokens || tokenInfo.balance.gt(TOKEN_MIN_AMOUNT)) &&
+        tokenInfo.isCashOutEligible
+    )
 )
 
 export const spendTokensByNetworkIdSelector = createSelector(
