@@ -109,6 +109,7 @@ const SwapAmountInput = ({
                 onInputChange?.(value)
               }}
               value={inputValue || undefined}
+              placeholderTextColor={Colors.gray3}
               placeholder="0"
               // hide input when loading so that the value is not visible under the loader
               style={{ opacity: loading ? 0 : 1 }}
@@ -183,8 +184,7 @@ const SwapAmountInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.gray1,
-    borderColor: Colors.gray2,
+    borderColor: Colors.black,
     borderWidth: 1,
   },
   tokenInfo: {
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   bottomContainer: {
-    borderColor: Colors.gray2,
+    borderColor: Colors.black,
     borderTopWidth: 1,
   },
   inputContainer: {
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
   maxText: {
     ...typeScale.labelXXSmall,
-    color: Colors.gray5,
+    color: Colors.black,
     fontSize: 10,
   },
   tokenName: {
