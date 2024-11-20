@@ -35,7 +35,7 @@ const mockBalances = {
         decimals: 18,
         balance: '1',
         isFeeCurrency: true,
-        priceUsd: '10',
+        priceUsd: '1',
         priceFetchedAt: Date.now(),
         isCashInEligible: true,
         isCashOutEligible: true,
