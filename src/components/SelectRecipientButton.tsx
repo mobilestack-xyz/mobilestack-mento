@@ -57,6 +57,10 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.Regular16,
     paddingHorizontal: Spacing.Regular16,
   },
+  icon: {
+    borderWidth: 1,
+    borderColor: colors.gray2,
+  },
   subtitle: {
     ...typeScale.bodySmall,
     color: colors.gray3,
