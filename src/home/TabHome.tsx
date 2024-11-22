@@ -31,6 +31,7 @@ import { initializeSentryUserContext } from 'src/sentry/actions'
 import Colors from 'src/styles/colors'
 import { typeScale } from 'src/styles/fonts'
 import { Spacing } from 'src/styles/styles'
+import variables from 'src/styles/variables'
 import { useCashOutTokens, useCKES, useCUSD } from 'src/tokens/hooks'
 import { hasGrantedContactsPermission } from 'src/utils/contacts'
 
@@ -300,7 +301,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
-    paddingHorizontal: Spacing.Regular16,
+    padding: variables.contentPadding,
     gap: Spacing.Regular16,
   },
   flatCard: {
