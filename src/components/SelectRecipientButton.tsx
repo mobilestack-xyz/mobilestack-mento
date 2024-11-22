@@ -14,7 +14,6 @@ type Props = {
   onPress: () => void
   icon: ReactElement
   gradientBackground?: boolean
-
   testID: string
   showCheckmark?: boolean
 }

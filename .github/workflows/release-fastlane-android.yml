@@ -38,7 +38,7 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@v2
         with:
           secrets: |-
-            ANDROID_RELEASE_KEYSTORE:projects/1027349420744/secrets/VALORA_RELEASE_KEYSTORE_V2
+            ANDROID_RELEASE_KEYSTORE:projects/1027349420744/secrets/ANDROID_MENTO_RELEASE_KEYSTORE
             RELEASE_STORE_PASSWORD:projects/1027349420744/secrets/ANDROID_MENTO_RELEASE_KEYSTORE_PASSWORD
             SLACK_WEBHOOK_URL:projects/1027349420744/secrets/SLACK_WEBHOOK_URL
             BOT_SSH_KEY:projects/1027349420744/secrets/BOT_SSH_PRIVATE_KEY
