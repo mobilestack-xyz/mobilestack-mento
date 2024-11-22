@@ -59,7 +59,7 @@ function RecipientItem({ recipient, onSelectRecipient, loading, selected }: Prop
             recipient={recipient}
             backgroundColor={Colors.white}
             foregroundColor={Colors.black}
-            borderColor={Colors.gray2}
+            borderColor={Colors.black}
             DefaultIcon={() => renderDefaultIcon(recipient)} // no need to honor color props here since the color we need match the defaults
           />
           {!!showAppIcon && (
