@@ -15,10 +15,10 @@ jobs:
     secrets:
       gcp-service-account-key: ${{ secrets.GCP_MAINNET_RELEASE_AUTOMATION_SERVICE_ACCOUNT_KEY }}
 
-  # android:
-  #   uses: ./.github/workflows/release-fastlane-android.yml
-  #   with:
-  #     branch: ${{ github.ref_name }}
-  #     lanes: '["mainnet"]'
-  #   secrets:
-  #     gcp-service-account-key: ${{ secrets.GCP_MAINNET_RELEASE_AUTOMATION_SERVICE_ACCOUNT_KEY }}
+  android:
+    uses: ./.github/workflows/release-fastlane-android.yml
+    with:
+      branch: ${{ github.ref_name }}
+      lanes: '["mainnet"]'
+    secrets:
+      gcp-service-account-key: ${{ secrets.GCP_MAINNET_RELEASE_AUTOMATION_SERVICE_ACCOUNT_KEY }}
