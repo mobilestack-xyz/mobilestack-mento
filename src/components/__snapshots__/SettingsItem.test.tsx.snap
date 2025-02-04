@@ -40,7 +40,7 @@ exports[`SettingsItemInput renders correctly 1`] = `
         <Text
           style={
             {
-              "color": "#2E3338",
+              "color": "#002586",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -75,7 +75,7 @@ exports[`SettingsItemInput renders correctly 1`] = `
           style={
             [
               {
-                "color": "#2E3338",
+                "color": "#002586",
                 "flex": 1,
                 "fontFamily": "Inter-Regular",
                 "fontSize": 16,
@@ -148,7 +148,7 @@ exports[`SettingsItemSwitch renders correctly 1`] = `
         <Text
           style={
             {
-              "color": "#2E3338",
+              "color": "#002586",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -167,8 +167,8 @@ exports[`SettingsItemSwitch renders correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         thumbTintColor="#E6E6E6"
         trackColorForFalse="#757575"
-        trackColorForTrue="#5061E8"
-        trackTintColor="#5061E8"
+        trackColorForTrue="#1B5BFF"
+        trackTintColor="#1B5BFF"
       />
     </View>
   </View>
@@ -215,7 +215,7 @@ exports[`SettingsItemTextValue renders correctly 1`] = `
         <Text
           style={
             {
-              "color": "#2E3338",
+              "color": "#002586",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -310,7 +310,7 @@ exports[`SettingsItemTextValue renders correctly without value 1`] = `
         <Text
           style={
             {
-              "color": "#2E3338",
+              "color": "#002586",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,

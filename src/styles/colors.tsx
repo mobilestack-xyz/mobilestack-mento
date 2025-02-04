@@ -2,7 +2,7 @@
 // from https://www.figma.com/design/erFfzHvSTm5g1sjK6jWyEH/Working-Design-System?node-id=2100-4881&node-type=frame&t=vKGGXrs3Torz7kFE-0
 enum Colors {
   // black & white
-  black = '#2E3338',
+  black = '#002586',
   white = '#FFFFFF',
 
   // grays
@@ -13,8 +13,8 @@ enum Colors {
   gray1 = '#F8F9F9',
 
   // primary
-  primary = '#5061E8',
-  accent = '#5061E8',
+  primary = '#1B5BFF',
+  accent = '#1B5BFF',
   lightPrimary = 'rgba(80, 97, 232, 0.1)',
 
   // other
@@ -25,8 +25,8 @@ enum Colors {
   error = '#EA6042',
   errorDark = '#C93717',
   errorLight = '#FBF2F0',
-  gradientBorderLeft = '#26d98a',
-  gradientBorderRight = '#ffd52c',
+  gradientBorderLeft = '#002070',
+  gradientBorderRight = '#1B5BFF',
 
   // shadows
   softShadow = 'rgba(156, 164, 169, 0.4)',

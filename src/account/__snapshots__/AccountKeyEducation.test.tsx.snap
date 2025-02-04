@@ -85,7 +85,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
       >
         <path
           d="M13.9999 2.00146L1.99994 14.0015"
-          stroke="#2E3338"
+          stroke="#002586"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
@@ -93,7 +93,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
         />
         <path
           d="M1.99994 2.00146L13.9999 14.0015"
-          stroke="#2E3338"
+          stroke="#002586"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
@@ -161,6 +161,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Bold",
                     "fontSize": 20,
                     "lineHeight": 28,
@@ -174,6 +175,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Regular",
                     "fontSize": 16,
                     "lineHeight": 24,
@@ -231,6 +233,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Bold",
                     "fontSize": 20,
                     "lineHeight": 28,
@@ -244,6 +247,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Regular",
                     "fontSize": 16,
                     "lineHeight": 24,
@@ -301,6 +305,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Bold",
                     "fontSize": 20,
                     "lineHeight": 28,
@@ -314,6 +319,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Regular",
                     "fontSize": 16,
                     "lineHeight": 24,
@@ -371,6 +377,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Bold",
                     "fontSize": 20,
                     "lineHeight": 28,
@@ -384,6 +391,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Regular",
                     "fontSize": 16,
                     "lineHeight": 24,
@@ -417,7 +425,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
       <View
         style={
           {
-            "backgroundColor": "#5061E8",
+            "backgroundColor": "#1B5BFF",
             "borderRadius": 5,
             "flex": 0,
             "height": 5,
@@ -531,7 +539,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#FFFFFF",
-                  "borderColor": "#2E3338",
+                  "borderColor": "#002586",
                   "borderRadius": 100,
                   "borderWidth": 1,
                   "flexDirection": "row",
@@ -551,7 +559,7 @@ exports[`AccountKeyEducation renders correctly 1`] = `
               maxFontSizeMultiplier={1}
               style={
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-SemiBold",
                   "fontSize": 16,
                   "lineHeight": 24,

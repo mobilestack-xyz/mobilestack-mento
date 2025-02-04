@@ -150,6 +150,7 @@ exports[`renders correctly 1`] = `
             <Text
               style={
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Bold",
                   "fontSize": 20,
                   "lineHeight": 28,
@@ -163,6 +164,7 @@ exports[`renders correctly 1`] = `
             <Text
               style={
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Regular",
                   "fontSize": 16,
                   "lineHeight": 24,
@@ -224,7 +226,7 @@ exports[`renders correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#5061E8",
+                    "color": "#1B5BFF",
                     "fontFamily": "Inter-SemiBold",
                     "fontSize": 16,
                     "lineHeight": 24,

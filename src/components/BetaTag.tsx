@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   text: {
-    color: Colors.infoDark,
     ...typeScale.labelSemiBoldSmall,
+    color: Colors.infoDark,
   },
 })

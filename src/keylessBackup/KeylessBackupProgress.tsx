@@ -341,7 +341,7 @@ function Setup({ origin }: { origin: KeylessBackupOrigin }) {
 
   const onPressSkip = () => {
     AppAnalytics.track(KeylessBackupEvents.cab_progress_failed_skip_onboarding)
-    navigate(Screens.ChooseYourAdventure)
+    navigate(Screens.OnboardingSuccessScreen)
   }
 
   switch (keylessBackupStatus) {
@@ -483,8 +483,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   help: {
-    color: colors.accent,
     ...typeScale.labelSemiBoldMedium,
+    color: colors.accent,
   },
 })
 

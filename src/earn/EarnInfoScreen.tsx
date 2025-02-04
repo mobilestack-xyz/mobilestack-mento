@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    color: Colors.black,
     textAlign: 'center',
     marginBottom: Spacing.Thick24,
     ...typeScale.titleLarge,
@@ -159,15 +158,12 @@ const styles = StyleSheet.create({
     gap: Spacing.Regular16,
   },
   detailsItemTitle: {
-    color: Colors.black,
     ...typeScale.labelSemiBoldMedium,
   },
   detailsItemSubtitle: {
-    color: Colors.black,
     ...typeScale.bodySmall,
   },
   detailsItemFootnote: {
-    color: Colors.black,
     marginTop: Spacing.Smallest8,
     ...typeScale.bodyXSmall,
   },

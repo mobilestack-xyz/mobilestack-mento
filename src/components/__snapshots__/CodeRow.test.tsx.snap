@@ -62,7 +62,7 @@ exports[`CodeRow renders correctly for all CodeRowStatus states 2`] = `
     style={
       [
         {
-          "color": "#2E3338",
+          "color": "#002586",
           "flex": 1,
           "fontFamily": "Inter-Regular",
           "fontSize": 16,
@@ -108,7 +108,7 @@ exports[`CodeRow renders correctly for all CodeRowStatus states 3`] = `
     test...
   </Text>
   <ActivityIndicator
-    color="#5061E8"
+    color="#1B5BFF"
     size="small"
     style={
       {
@@ -200,7 +200,7 @@ exports[`CodeRow renders correctly for all CodeRowStatus states 5`] = `
     >
       <path
         d="M20.5 7.33 9.186 18.643 4 13.458l1.33-1.33 3.856 3.847L19.17 6 20.5 7.33Z"
-        fill="#5061E8"
+        fill="#1B5BFF"
         style={{}}
       />
     </svg>

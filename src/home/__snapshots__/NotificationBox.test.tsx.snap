@@ -70,6 +70,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                 <Text
                   style={
                     {
+                      "color": "#002586",
                       "fontFamily": "Inter-Regular",
                       "fontSize": 18,
                       "lineHeight": 28,
@@ -130,7 +131,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -276,6 +277,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                 <Text
                   style={
                     {
+                      "color": "#002586",
                       "fontFamily": "Inter-Regular",
                       "fontSize": 18,
                       "lineHeight": 28,
@@ -336,7 +338,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -394,7 +396,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -497,6 +499,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                 <Text
                   style={
                     {
+                      "color": "#002586",
                       "fontFamily": "Inter-Regular",
                       "fontSize": 18,
                       "lineHeight": 28,
@@ -557,7 +560,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -615,7 +618,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -692,6 +695,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                 <Text
                   style={
                     {
+                      "color": "#002586",
                       "fontFamily": "Inter-Regular",
                       "fontSize": 18,
                       "lineHeight": 28,
@@ -752,7 +756,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -810,7 +814,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
                     style={
                       [
                         {
-                          "color": "#5061E8",
+                          "color": "#1B5BFF",
                           "fontFamily": "Inter-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 24,
@@ -879,7 +883,7 @@ exports[`NotificationBox renders correctly for with all notifications 1`] = `
     <View
       style={
         {
-          "backgroundColor": "#5061E8",
+          "backgroundColor": "#1B5BFF",
           "borderRadius": 5,
           "flex": 0,
           "height": 5,

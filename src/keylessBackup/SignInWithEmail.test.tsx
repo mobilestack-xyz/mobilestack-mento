@@ -1,19 +1,28 @@
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import { Provider } from 'react-redux'
-import { KeylessBackupEvents } from 'src/analytics/Events'
 import AppAnalytics from 'src/analytics/AppAnalytics'
+import { KeylessBackupEvents } from 'src/analytics/Events'
 import SignInWithEmail from 'src/keylessBackup/SignInWithEmail'
 import { auth0SignInCompleted } from 'src/keylessBackup/slice'
 import { KeylessBackupFlow, KeylessBackupOrigin } from 'src/keylessBackup/types'
 import { noHeader } from 'src/navigator/Headers'
 import { navigate } from 'src/navigator/NavigationService'
 import { Screens } from 'src/navigator/Screens'
+import { goToNextOnboardingScreen } from 'src/onboarding/steps'
 import { getFeatureGate } from 'src/statsig'
 import { StatsigFeatureGates } from 'src/statsig/types'
 import Logger from 'src/utils/Logger'
 import MockedNavigator from 'test/MockedNavigator'
 import { createMockStore } from 'test/utils'
+import { mockOnboardingProps } from 'test/values'
+
+const mockOnboardingPropsSelector = jest.fn(() => mockOnboardingProps)
+jest.mock('src/onboarding/steps', () => ({
+  goToNextOnboardingScreen: jest.fn(),
+  getOnboardingStepValues: () => ({ step: 2, totalSteps: 3 }),
+  onboardingPropsSelector: () => mockOnboardingPropsSelector(),
+}))
 
 const mockAuthorize = jest.fn()
 const mockGetCredentials = jest.fn()
@@ -271,7 +280,10 @@ describe('SignInWithEmail', () => {
     expect(getByTestId('KeylessBackupSignInWithEmail/BottomSheet')).toBeTruthy()
 
     fireEvent.press(getByText('signInWithEmail.bottomSheet.skip'))
-    expect(navigate).toHaveBeenCalledWith(Screens.VerificationStartScreen)
+    expect(goToNextOnboardingScreen).toHaveBeenCalledWith({
+      firstScreenInCurrentStep: Screens.SignInWithEmail,
+      onboardingProps: mockOnboardingProps,
+    })
     expect(AppAnalytics.track).toHaveBeenCalledWith(
       KeylessBackupEvents.cab_sign_in_with_email_screen_skip,
       {
