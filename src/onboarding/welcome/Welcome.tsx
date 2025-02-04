@@ -8,7 +8,7 @@ import AppAnalytics from 'src/analytics/AppAnalytics'
 import { OnboardingEvents } from 'src/analytics/Events'
 import Button, { BtnSizes, BtnTypes } from 'src/components/Button'
 import CheckBox from 'src/icons/CheckBox'
-import MSLogoFull from 'src/images/MSLogoFull'
+import BivvyLogoFull from 'src/images/BivvyLogoFull'
 import WelcomeLogo from 'src/images/WelcomeLogo'
 import { nuxNavigationOptions } from 'src/navigator/Headers'
 import { navigate } from 'src/navigator/NavigationService'
@@ -128,7 +128,7 @@ export default function Welcome() {
         />
       </View>
       <View style={styles.msLogoContainer}>
-        <MSLogoFull />
+        <BivvyLogoFull />
       </View>
     </SafeAreaView>
   )
