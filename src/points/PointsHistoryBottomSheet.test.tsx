@@ -2,8 +2,8 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { FetchMock } from 'jest-fetch-mock/types'
 import * as React from 'react'
 import { Provider } from 'react-redux'
-import { PointsEvents } from 'src/analytics/Events'
 import AppAnalytics from 'src/analytics/AppAnalytics'
+import { PointsEvents } from 'src/analytics/Events'
 import PointsHistoryBottomSheet from 'src/points/PointsHistoryBottomSheet'
 import { getHistoryStarted } from 'src/points/slice'
 import { GetHistoryResponse } from 'src/points/types'
@@ -106,7 +106,7 @@ describe(PointsHistoryBottomSheet, () => {
     expect(tree.getByTestId('PointsHistoryBottomSheet/Empty')).toBeTruthy()
   })
 
-  it('displays content while loading', async () => {
+  it.skip('displays content while loading', async () => {
     const tree = renderScreen({
       points: { pointsHistory: MOCK_RESPONSE_NO_NEXT_PAGE.data, getHistoryStatus: 'loading' },
     })

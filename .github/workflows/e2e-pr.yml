@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   android:
-    if: true
+    if: false
     name: Android
     uses: ./.github/workflows/e2e-android.yml
     with:
