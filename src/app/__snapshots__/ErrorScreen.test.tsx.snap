@@ -102,6 +102,7 @@ exports[`ErrorScreen with errorMessage renders correctly 1`] = `
             {
               "borderRadius": 100,
             },
+            undefined,
           ]
         }
       >
@@ -323,6 +324,7 @@ exports[`ErrorScreen without errorMessage renders correctly 1`] = `
             {
               "borderRadius": 100,
             },
+            undefined,
           ]
         }
       >

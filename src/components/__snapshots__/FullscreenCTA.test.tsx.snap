@@ -102,6 +102,7 @@ exports[`FullscreenCTA renders correctly 1`] = `
             {
               "borderRadius": 100,
             },
+            undefined,
           ]
         }
       >

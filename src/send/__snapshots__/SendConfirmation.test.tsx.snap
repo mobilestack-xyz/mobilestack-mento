@@ -618,6 +618,7 @@ exports[`SendConfirmation renders correctly 1`] = `
               {
                 "borderRadius": 100,
               },
+              false,
             ]
           }
         >

@@ -147,6 +147,9 @@ exports[`ValidateRecipientAccount renders correctly when full validation require
                 {
                   "borderRadius": 100,
                 },
+                {
+                  "opacity": 0.5,
+                },
               ]
             }
           >
@@ -689,6 +692,9 @@ exports[`ValidateRecipientAccount renders correctly when partial validation requ
                 },
                 {
                   "borderRadius": 100,
+                },
+                {
+                  "opacity": 0.5,
                 },
               ]
             }

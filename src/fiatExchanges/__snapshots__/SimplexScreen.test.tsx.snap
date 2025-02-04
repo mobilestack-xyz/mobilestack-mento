@@ -521,6 +521,9 @@ exports[`SimplexScreen renders correctly 1`] = `
             {
               "borderRadius": 100,
             },
+            {
+              "opacity": 0.5,
+            },
           ]
         }
       >
@@ -1149,6 +1152,9 @@ exports[`SimplexScreen renders correctly 2`] = `
             },
             {
               "borderRadius": 100,
+            },
+            {
+              "opacity": 0.5,
             },
           ]
         }

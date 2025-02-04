@@ -214,6 +214,7 @@ exports[`Button when type not given defaults to primary 1`] = `
         {
           "borderRadius": 100,
         },
+        undefined,
       ]
     }
   >

@@ -94,6 +94,7 @@ exports[`CashinInSuccess renders correctly with a provider 1`] = `
             {
               "borderRadius": 100,
             },
+            undefined,
           ]
         }
       >
@@ -308,6 +309,7 @@ exports[`CashinInSuccess renders correctly without a provider 1`] = `
             {
               "borderRadius": 100,
             },
+            undefined,
           ]
         }
       >
