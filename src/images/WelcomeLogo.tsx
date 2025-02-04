@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Svg, { ClipPath, Defs, G, LinearGradient, Mask, Path, Stop } from 'react-native-svg'
-const SvgComponent = (props) => (
+const SvgComponent = (props: any) => (
   <Svg xmlns="http://www.w3.org/2000/svg" width={204} height={184} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Mask
@@ -94,9 +94,6 @@ const SvgComponent = (props) => (
           fill="#000"
           d="M126.443 98.269c0 23.402-19.009 42.375-42.456 42.375-1.944 0-3.858-.131-5.735-.384a42.213 42.213 0 0 1-1.904-12.586c0-23.402 19.008-42.373 42.456-42.373 1.944 0 3.858.131 5.734.384a42.179 42.179 0 0 1 1.905 12.584Z"
           opacity={0.4}
-          style={{
-            mixBlendMode: 'soft-light',
-          }}
         />
         <Path
           fill="url(#u)"

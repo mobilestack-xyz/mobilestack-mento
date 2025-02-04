@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Svg, { G, Mask, Path } from 'react-native-svg'
-const SvgComponent = (props) => (
-  <Svg xmlns="http://www.w3.org/2000/svg" width={71} height={24} fill="none" {...props}>
+
+const SvgComponent = (props: any) => (
+  <Svg width={71} height={24} fill="none" {...props}>
     <Mask
       id="a"
       width={24}

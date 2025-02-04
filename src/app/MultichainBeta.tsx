@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: Colors.black,
     ...typeScale.titleSmall,
     marginVertical: Spacing.Regular16,
   },
@@ -112,7 +111,6 @@ const styles = StyleSheet.create({
     gap: Spacing.Small12,
   },
   description: {
-    color: Colors.black,
     ...typeScale.bodyMedium,
   },
   ctaContainer: {
@@ -128,8 +126,8 @@ const styles = StyleSheet.create({
     height: 56,
   },
   supportButton: {
-    color: Colors.accent,
     ...typeScale.bodyMedium,
+    color: Colors.accent,
   },
 })
 

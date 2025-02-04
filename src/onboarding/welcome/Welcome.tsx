@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
     gap: Spacing.Smallest8,
   },
   termsText: {
-    color: colors.black,
     flexShrink: 1,
     ...typeScale.bodySmall,
   },
