@@ -37,6 +37,7 @@ exports[`CashinInSuccess renders correctly with a provider 1`] = `
     <Text
       style={
         {
+          "color": "#002586",
           "fontFamily": "Inter-Medium",
           "fontSize": 18,
           "lineHeight": 28,
@@ -50,6 +51,7 @@ exports[`CashinInSuccess renders correctly with a provider 1`] = `
     <Text
       style={
         {
+          "color": "#002586",
           "fontFamily": "Inter-Regular",
           "fontSize": 16,
           "lineHeight": 24,
@@ -95,6 +97,48 @@ exports[`CashinInSuccess renders correctly with a provider 1`] = `
           ]
         }
       >
+        <BVLinearGradient
+          borderRadii={
+            [
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+            ]
+          }
+          colors={
+            [
+              -16768912,
+              -14984193,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          locations={null}
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
         <View
           accessibilityState={
             {
@@ -133,7 +177,7 @@ exports[`CashinInSuccess renders correctly with a provider 1`] = `
             [
               {
                 "alignItems": "center",
-                "backgroundColor": "#5061E8",
+                "backgroundColor": undefined,
                 "flexDirection": "row",
                 "height": 48,
                 "justifyContent": "center",
@@ -207,6 +251,7 @@ exports[`CashinInSuccess renders correctly without a provider 1`] = `
     <Text
       style={
         {
+          "color": "#002586",
           "fontFamily": "Inter-Medium",
           "fontSize": 18,
           "lineHeight": 28,
@@ -220,6 +265,7 @@ exports[`CashinInSuccess renders correctly without a provider 1`] = `
     <Text
       style={
         {
+          "color": "#002586",
           "fontFamily": "Inter-Regular",
           "fontSize": 16,
           "lineHeight": 24,
@@ -265,6 +311,48 @@ exports[`CashinInSuccess renders correctly without a provider 1`] = `
           ]
         }
       >
+        <BVLinearGradient
+          borderRadii={
+            [
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+            ]
+          }
+          colors={
+            [
+              -16768912,
+              -14984193,
+            ]
+          }
+          endPoint={
+            [
+              1,
+              0,
+            ]
+          }
+          locations={null}
+          startPoint={
+            [
+              0,
+              0,
+            ]
+          }
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
         <View
           accessibilityState={
             {
@@ -303,7 +391,7 @@ exports[`CashinInSuccess renders correctly without a provider 1`] = `
             [
               {
                 "alignItems": "center",
-                "backgroundColor": "#5061E8",
+                "backgroundColor": undefined,
                 "flexDirection": "row",
                 "height": 48,
                 "justifyContent": "center",

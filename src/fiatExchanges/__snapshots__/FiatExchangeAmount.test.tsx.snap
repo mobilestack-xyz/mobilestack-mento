@@ -70,6 +70,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with EUR as app currency 1`
           <Text
             style={
               {
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -89,6 +90,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with EUR as app currency 1`
           style={
             [
               {
+                "color": "#002586",
                 "flex": 1,
                 "fontFamily": "Inter-Regular",
                 "fontSize": 19,
@@ -98,7 +100,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with EUR as app currency 1`
                 "textAlign": "right",
               },
               {
-                "color": "#5061E8",
+                "color": "#1B5BFF",
               },
             ]
           }
@@ -131,6 +133,48 @@ exports[`FiatExchangeAmount cashIn renders correctly with EUR as app currency 1`
         ]
       }
     >
+      <BVLinearGradient
+        borderRadii={
+          [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+          ]
+        }
+        colors={
+          [
+            -16768912,
+            -14984193,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        locations={null}
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
       <View
         accessibilityState={
           {
@@ -169,7 +213,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with EUR as app currency 1`
           [
             {
               "alignItems": "center",
-              "backgroundColor": "#5061E8",
+              "backgroundColor": undefined,
               "flexDirection": "row",
               "flexGrow": 1,
               "height": 48,
@@ -291,6 +335,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with USD as app currency 1`
           <Text
             style={
               {
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -310,6 +355,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with USD as app currency 1`
           style={
             [
               {
+                "color": "#002586",
                 "flex": 1,
                 "fontFamily": "Inter-Regular",
                 "fontSize": 19,
@@ -319,7 +365,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with USD as app currency 1`
                 "textAlign": "right",
               },
               {
-                "color": "#5061E8",
+                "color": "#1B5BFF",
               },
             ]
           }
@@ -352,6 +398,48 @@ exports[`FiatExchangeAmount cashIn renders correctly with USD as app currency 1`
         ]
       }
     >
+      <BVLinearGradient
+        borderRadii={
+          [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+          ]
+        }
+        colors={
+          [
+            -16768912,
+            -14984193,
+          ]
+        }
+        endPoint={
+          [
+            1,
+            0,
+          ]
+        }
+        locations={null}
+        startPoint={
+          [
+            0,
+            0,
+          ]
+        }
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
       <View
         accessibilityState={
           {
@@ -390,7 +478,7 @@ exports[`FiatExchangeAmount cashIn renders correctly with USD as app currency 1`
           [
             {
               "alignItems": "center",
-              "backgroundColor": "#5061E8",
+              "backgroundColor": undefined,
               "flexDirection": "row",
               "flexGrow": 1,
               "height": 48,

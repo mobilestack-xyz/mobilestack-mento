@@ -118,14 +118,14 @@ exports[`BackupPhrase renders correctly with backup completed 1`] = `
           style={
             [
               {
-                "color": "#5061E8",
+                "color": "#1B5BFF",
                 "fontFamily": "Inter-Regular",
                 "fontSize": 16,
                 "lineHeight": 24,
               },
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                 },
                 {
                   "color": "#666666",
@@ -193,7 +193,7 @@ exports[`BackupPhrase renders correctly with backup completed 1`] = `
         <Text
           style={
             {
-              "color": "#5061E8",
+              "color": "#1B5BFF",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -234,6 +234,7 @@ exports[`BackupPhrase renders correctly with backup completed 1`] = `
             <Text
               style={
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Bold",
                   "fontSize": 20,
                   "lineHeight": 28,
@@ -250,7 +251,7 @@ exports[`BackupPhrase renders correctly with backup completed 1`] = `
           style={
             {
               "alignContent": "center",
-              "borderColor": "#2E3338",
+              "borderColor": "#002586",
               "borderRadius": 8,
               "borderWidth": 1,
               "flexDirection": "row",
@@ -266,6 +267,7 @@ exports[`BackupPhrase renders correctly with backup completed 1`] = `
       <Text
         style={
           {
+            "color": "#002586",
             "fontFamily": "Inter-Regular",
             "fontSize": 16,
             "lineHeight": 24,
@@ -398,14 +400,14 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
           style={
             [
               {
-                "color": "#5061E8",
+                "color": "#1B5BFF",
                 "fontFamily": "Inter-Regular",
                 "fontSize": 16,
                 "lineHeight": 24,
               },
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                 },
                 {
                   "color": "#666666",
@@ -473,7 +475,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
         <Text
           style={
             {
-              "color": "#5061E8",
+              "color": "#1B5BFF",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -514,6 +516,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
             <Text
               style={
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Bold",
                   "fontSize": 20,
                   "lineHeight": 28,
@@ -530,7 +533,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
           style={
             {
               "alignContent": "center",
-              "borderColor": "#2E3338",
+              "borderColor": "#002586",
               "borderRadius": 8,
               "borderWidth": 1,
               "flexDirection": "row",
@@ -546,6 +549,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
       <Text
         style={
           {
+            "color": "#002586",
             "fontFamily": "Inter-Regular",
             "fontSize": 16,
             "lineHeight": 24,
@@ -577,13 +581,14 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
       testID="backupKeySavedSwitch"
       thumbTintColor="#E6E6E6"
       trackColorForFalse="#757575"
-      trackColorForTrue="#5061E8"
+      trackColorForTrue="#1B5BFF"
       trackTintColor="#757575"
     />
     <Text
       onPress={[Function]}
       style={
         {
+          "color": "#002586",
           "flex": 1,
           "fontFamily": "Inter-Regular",
           "fontSize": 16,
@@ -659,7 +664,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
             {
               "alignItems": "center",
               "backgroundColor": "#FFFFFF",
-              "borderColor": "#2E3338",
+              "borderColor": "#002586",
               "borderRadius": 100,
               "borderWidth": 1,
               "flexDirection": "row",
@@ -679,7 +684,7 @@ exports[`BackupPhrase renders correctly with backup not completed 1`] = `
           maxFontSizeMultiplier={1}
           style={
             {
-              "color": "#2E3338",
+              "color": "#002586",
               "fontFamily": "Inter-SemiBold",
               "fontSize": 16,
               "lineHeight": 24,
@@ -814,14 +819,14 @@ exports[`BackupPhrase still renders when mnemonic doesnt show up 1`] = `
           style={
             [
               {
-                "color": "#5061E8",
+                "color": "#1B5BFF",
                 "fontFamily": "Inter-Regular",
                 "fontSize": 16,
                 "lineHeight": 24,
               },
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                 },
                 {
                   "color": "#666666",
@@ -889,7 +894,7 @@ exports[`BackupPhrase still renders when mnemonic doesnt show up 1`] = `
         <Text
           style={
             {
-              "color": "#5061E8",
+              "color": "#1B5BFF",
               "fontFamily": "Inter-Regular",
               "fontSize": 16,
               "lineHeight": 24,
@@ -930,6 +935,7 @@ exports[`BackupPhrase still renders when mnemonic doesnt show up 1`] = `
             <Text
               style={
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Bold",
                   "fontSize": 20,
                   "lineHeight": 28,
@@ -946,7 +952,7 @@ exports[`BackupPhrase still renders when mnemonic doesnt show up 1`] = `
           style={
             {
               "alignContent": "center",
-              "borderColor": "#2E3338",
+              "borderColor": "#002586",
               "borderRadius": 8,
               "borderWidth": 1,
               "flexDirection": "row",
@@ -962,6 +968,7 @@ exports[`BackupPhrase still renders when mnemonic doesnt show up 1`] = `
       <Text
         style={
           {
+            "color": "#002586",
             "fontFamily": "Inter-Regular",
             "fontSize": 16,
             "lineHeight": 24,

@@ -85,7 +85,7 @@ exports[`Education renders correctly 1`] = `
       >
         <path
           d="M13.9999 2.00146L1.99994 14.0015"
-          stroke="#2E3338"
+          stroke="#002586"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
@@ -93,7 +93,7 @@ exports[`Education renders correctly 1`] = `
         />
         <path
           d="M1.99994 2.00146L13.9999 14.0015"
-          stroke="#2E3338"
+          stroke="#002586"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
@@ -147,6 +147,7 @@ exports[`Education renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Bold",
                     "fontSize": 20,
                     "lineHeight": 28,
@@ -160,6 +161,7 @@ exports[`Education renders correctly 1`] = `
               <Text
                 style={
                   {
+                    "color": "#002586",
                     "fontFamily": "Inter-Regular",
                     "fontSize": 16,
                     "lineHeight": 24,
@@ -205,6 +207,48 @@ exports[`Education renders correctly 1`] = `
             ]
           }
         >
+          <BVLinearGradient
+            borderRadii={
+              [
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+              ]
+            }
+            colors={
+              [
+                -16768912,
+                -14984193,
+              ]
+            }
+            endPoint={
+              [
+                1,
+                0,
+              ]
+            }
+            locations={null}
+            startPoint={
+              [
+                0,
+                0,
+              ]
+            }
+            style={
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          />
           <View
             accessibilityState={
               {
@@ -243,7 +287,7 @@ exports[`Education renders correctly 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#5061E8",
+                  "backgroundColor": undefined,
                   "flexDirection": "row",
                   "flexGrow": 1,
                   "height": 48,

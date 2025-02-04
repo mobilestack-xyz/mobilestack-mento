@@ -62,7 +62,7 @@ exports[`Button when type is SECONDARY renders 1`] = `
           {
             "alignItems": "center",
             "backgroundColor": "#FFFFFF",
-            "borderColor": "#2E3338",
+            "borderColor": "#002586",
             "borderRadius": 100,
             "borderWidth": 1,
             "flexDirection": "row",
@@ -81,7 +81,7 @@ exports[`Button when type is SECONDARY renders 1`] = `
         maxFontSizeMultiplier={1}
         style={
           {
-            "color": "#2E3338",
+            "color": "#002586",
             "fontFamily": "Inter-SemiBold",
             "fontSize": 16,
             "lineHeight": 24,
@@ -178,7 +178,7 @@ exports[`Button when type is TERTIARY and text size is small renders 1`] = `
         maxFontSizeMultiplier={1}
         style={
           {
-            "color": "#2E3338",
+            "color": "#002586",
             "fontFamily": "Inter-SemiBold",
             "fontSize": 14,
             "lineHeight": 20,
@@ -217,6 +217,48 @@ exports[`Button when type not given defaults to primary 1`] = `
       ]
     }
   >
+    <BVLinearGradient
+      borderRadii={
+        [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+        ]
+      }
+      colors={
+        [
+          -16768912,
+          -14984193,
+        ]
+      }
+      endPoint={
+        [
+          1,
+          0,
+        ]
+      }
+      locations={null}
+      startPoint={
+        [
+          0,
+          0,
+        ]
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
     <View
       accessibilityState={
         {
@@ -255,7 +297,7 @@ exports[`Button when type not given defaults to primary 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#5061E8",
+            "backgroundColor": undefined,
             "flexDirection": "row",
             "height": 48,
             "justifyContent": "center",

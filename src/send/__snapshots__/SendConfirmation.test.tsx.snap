@@ -114,7 +114,7 @@ exports[`SendConfirmation renders correctly 1`] = `
             <path
               clipRule="evenodd"
               d="M7.707 13.707a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L2.414 7l5.293 5.293a1 1 0 0 1 0 1.414Z"
-              fill="#2E3338"
+              fill="#002586"
               fillRule="evenodd"
             />
           </svg>
@@ -192,7 +192,7 @@ exports[`SendConfirmation renders correctly 1`] = `
                         "width": 40,
                       },
                       {
-                        "borderColor": "#2E3338",
+                        "borderColor": "#002586",
                         "borderWidth": 1,
                       },
                     ]
@@ -206,7 +206,7 @@ exports[`SendConfirmation renders correctly 1`] = `
                   >
                     <path
                       d="M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4Zm0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1Z"
-                      fill="#2E3338"
+                      fill="#002586"
                     />
                   </svg>
                 </View>
@@ -234,7 +234,7 @@ exports[`SendConfirmation renders correctly 1`] = `
                 <Text
                   style={
                     {
-                      "color": "#2E3338",
+                      "color": "#002586",
                       "fontFamily": "Inter-Medium",
                       "fontSize": 16,
                       "lineHeight": 24,
@@ -249,7 +249,7 @@ exports[`SendConfirmation renders correctly 1`] = `
             <Text
               style={
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-Bold",
                   "fontSize": 32,
                   "letterSpacing": -0.32,
@@ -315,12 +315,13 @@ exports[`SendConfirmation renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-Medium",
                   "fontSize": 16,
                   "lineHeight": 24,
                 },
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-Regular",
                   "fontSize": 16,
                   "lineHeight": 24,
@@ -336,12 +337,13 @@ exports[`SendConfirmation renders correctly 1`] = `
           style={
             [
               {
-                "color": "#2E3338",
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
               },
               {
+                "color": "#002586",
                 "fontFamily": "Inter-Regular",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -384,7 +386,7 @@ exports[`SendConfirmation renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-Medium",
                   "fontSize": 16,
                   "lineHeight": 24,
@@ -404,7 +406,7 @@ exports[`SendConfirmation renders correctly 1`] = `
           style={
             [
               {
-                "color": "#2E3338",
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -451,12 +453,13 @@ exports[`SendConfirmation renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-Medium",
                   "fontSize": 16,
                   "lineHeight": 24,
                 },
                 {
+                  "color": "#002586",
                   "fontFamily": "Inter-SemiBold",
                   "fontSize": 16,
                   "lineHeight": 24,
@@ -472,12 +475,13 @@ exports[`SendConfirmation renders correctly 1`] = `
           style={
             [
               {
-                "color": "#2E3338",
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
               },
               {
+                "color": "#002586",
                 "fontFamily": "Inter-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -523,7 +527,7 @@ exports[`SendConfirmation renders correctly 1`] = `
             style={
               [
                 {
-                  "color": "#2E3338",
+                  "color": "#002586",
                   "fontFamily": "Inter-Medium",
                   "fontSize": 16,
                   "lineHeight": 24,
@@ -561,7 +565,7 @@ exports[`SendConfirmation renders correctly 1`] = `
           style={
             [
               {
-                "color": "#2E3338",
+                "color": "#002586",
                 "fontFamily": "Inter-Medium",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -617,6 +621,48 @@ exports[`SendConfirmation renders correctly 1`] = `
             ]
           }
         >
+          <BVLinearGradient
+            borderRadii={
+              [
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+              ]
+            }
+            colors={
+              [
+                -16768912,
+                -14984193,
+              ]
+            }
+            endPoint={
+              [
+                1,
+                0,
+              ]
+            }
+            locations={null}
+            startPoint={
+              [
+                0,
+                0,
+              ]
+            }
+            style={
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          />
           <View
             accessibilityState={
               {
@@ -655,7 +701,7 @@ exports[`SendConfirmation renders correctly 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#5061E8",
+                  "backgroundColor": undefined,
                   "flexDirection": "row",
                   "flexGrow": 1,
                   "height": 48,

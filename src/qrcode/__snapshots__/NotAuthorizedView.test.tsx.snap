@@ -76,7 +76,7 @@ exports[`NotAuthorizedView renders correctly 1`] = `
     <Text
       style={
         {
-          "color": "#5061E8",
+          "color": "#1B5BFF",
           "fontFamily": "Inter-SemiBold",
           "fontSize": 16,
           "lineHeight": 24,

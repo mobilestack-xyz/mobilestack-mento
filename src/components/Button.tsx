@@ -1,6 +1,7 @@
 import { debounce } from 'lodash'
 import React, { ReactNode, useCallback } from 'react'
 import { ActivityIndicator, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import Touchable from 'src/components/Touchable'
 import Colors from 'src/styles/colors'
 import { typeScale } from 'src/styles/fonts'
@@ -86,41 +87,84 @@ export default React.memo(function Button(props: ButtonProps) {
   return (
     <View style={getStyleForWrapper(size, style)}>
       {/* these Views cannot be combined as it will cause ripple to not respect the border radius */}
-      <View style={[styles.containRipple, styles.rounded]}>
-        <Touchable
-          onPress={debouncedOnPress}
-          disabled={disabled}
-          style={[
-            getStyle(size, backgroundColor, opacity, borderColor, iconPositionLeft),
-            touchableStyle,
-          ]}
-          testID={testID}
+      {type === BtnTypes.PRIMARY ? (
+        <LinearGradient
+          colors={[Colors.gradientBorderLeft, Colors.gradientBorderRight]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={[styles.containRipple, styles.rounded, disabled && { opacity: 0.5 }]}
         >
-          {showLoading ? (
-            <ActivityIndicator
-              size="small"
-              color={loadingColor ?? textColor}
-              testID="Button/Loading"
-            />
-          ) : (
-            <>
-              {icon}
-              <Text
-                maxFontSizeMultiplier={1}
-                accessibilityLabel={accessibilityLabel}
-                style={{
-                  ...getTextStyle(textSize),
-                  color: textColor,
-                  marginLeft: icon && iconPositionLeft ? iconMargin : 0,
-                  marginRight: icon && !iconPositionLeft ? iconMargin : 0,
-                }}
-              >
-                {text}
-              </Text>
-            </>
-          )}
-        </Touchable>
-      </View>
+          <Touchable
+            onPress={debouncedOnPress}
+            disabled={disabled}
+            style={[
+              getStyle(size, backgroundColor, opacity, borderColor, iconPositionLeft),
+              touchableStyle,
+            ]}
+            testID={testID}
+          >
+            {showLoading ? (
+              <ActivityIndicator
+                size="small"
+                color={loadingColor ?? textColor}
+                testID="Button/Loading"
+              />
+            ) : (
+              <>
+                {icon}
+                <Text
+                  maxFontSizeMultiplier={1}
+                  accessibilityLabel={accessibilityLabel}
+                  style={{
+                    ...getTextStyle(textSize),
+                    color: textColor,
+                    marginLeft: icon && iconPositionLeft ? iconMargin : 0,
+                    marginRight: icon && !iconPositionLeft ? iconMargin : 0,
+                  }}
+                >
+                  {text}
+                </Text>
+              </>
+            )}
+          </Touchable>
+        </LinearGradient>
+      ) : (
+        <View style={[styles.containRipple, styles.rounded]}>
+          <Touchable
+            onPress={debouncedOnPress}
+            disabled={disabled}
+            style={[
+              getStyle(size, backgroundColor, opacity, borderColor, iconPositionLeft),
+              touchableStyle,
+            ]}
+            testID={testID}
+          >
+            {showLoading ? (
+              <ActivityIndicator
+                size="small"
+                color={loadingColor ?? textColor}
+                testID="Button/Loading"
+              />
+            ) : (
+              <>
+                {icon}
+                <Text
+                  maxFontSizeMultiplier={1}
+                  accessibilityLabel={accessibilityLabel}
+                  style={{
+                    ...getTextStyle(textSize),
+                    color: textColor,
+                    marginLeft: icon && iconPositionLeft ? iconMargin : 0,
+                    marginRight: icon && !iconPositionLeft ? iconMargin : 0,
+                  }}
+                >
+                  {text}
+                </Text>
+              </>
+            )}
+          </Touchable>
+        </View>
+      )}
     </View>
   )
 })
@@ -161,7 +205,7 @@ function getColors(type: BtnTypes, disabled: boolean | undefined) {
   switch (type) {
     case BtnTypes.PRIMARY:
       textColor = Colors.white
-      backgroundColor = Colors.primary
+      //backgroundColor = Colors.primary
       opacity = disabled ? 0.25 : 1.0
       break
     case BtnTypes.SECONDARY:
@@ -183,7 +227,7 @@ function getColors(type: BtnTypes, disabled: boolean | undefined) {
 
 function getStyle(
   size: BtnSizes | undefined,
-  backgroundColor: Colors,
+  backgroundColor: Colors | undefined,
   opacity: number | undefined,
   borderColor: Colors | undefined,
   iconPositionLeft: boolean

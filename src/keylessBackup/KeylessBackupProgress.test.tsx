@@ -1,8 +1,8 @@
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import * as React from 'react'
 import { Provider } from 'react-redux'
-import { KeylessBackupEvents } from 'src/analytics/Events'
 import AppAnalytics from 'src/analytics/AppAnalytics'
+import { KeylessBackupEvents } from 'src/analytics/Events'
 import KeylessBackupProgress from 'src/keylessBackup/KeylessBackupProgress'
 import { keylessBackupAcceptZeroBalance, keylessBackupBail } from 'src/keylessBackup/slice'
 import {
@@ -184,7 +184,7 @@ describe('KeylessBackupProgress', () => {
       expect(getByTestId('KeylessBackupProgress/Skip')).toBeTruthy()
       fireEvent.press(getByTestId('KeylessBackupProgress/Skip'))
 
-      expect(navigate).toBeCalledWith(Screens.ChooseYourAdventure)
+      expect(navigate).toBeCalledWith(Screens.OnboardingSuccessScreen)
 
       expect(AppAnalytics.track).toHaveBeenCalledTimes(1)
       expect(AppAnalytics.track).toHaveBeenCalledWith(
