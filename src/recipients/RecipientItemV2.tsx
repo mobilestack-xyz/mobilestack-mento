@@ -63,12 +63,7 @@ function RecipientItem({ recipient, onSelectRecipient, loading, selected }: Prop
             DefaultIcon={() => renderDefaultIcon(recipient)} // no need to honor color props here since the color we need match the defaults
           />
           {!!showAppIcon && (
-            <Logo
-              color={Colors.white}
-              style={styles.appIcon}
-              size={ICON_SIZE}
-              testID="RecipientItem/AppIcon"
-            />
+            <Logo style={styles.appIcon} size={ICON_SIZE} testID="RecipientItem/AppIcon" />
           )}
         </View>
         <View style={styles.contentContainer}>

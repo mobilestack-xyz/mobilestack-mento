@@ -1,33 +1,25 @@
 import * as React from 'react'
 import { StyleSheet, View, ViewStyle } from 'react-native'
-import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg'
+import Svg, { Path } from 'react-native-svg'
 
 interface Props {
   size?: number
-  color?: string
   style?: ViewStyle
   testID?: string
 }
 
-export default function Logo({ style, size = 32, color = '#02010A', testID }: Props) {
+export default function Logo({ style, size = 24, testID }: Props) {
   return (
     <View testID={testID} style={[styles.container, style]}>
-      <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-        <G clipPath="url(#clip0_3069_67395)">
-          <Path
-            d="M8.17236 8.17594V4.12915H14.0448C17.36 4.12915 19.8225 6.50961 19.8225 9.84226V15.7458H15.797V10.7944C15.797 9.12812 14.7552 8.17594 13.0977 8.17594H8.17236Z"
-            fill={color}
-          />
-          <Path
-            d="M15.7971 19.7927V15.7459H10.8719C9.21434 15.7459 8.17245 14.7937 8.17245 13.1274V8.17603H4.14697V14.0796C4.14697 17.4122 6.60962 19.7927 9.92471 19.7927H15.7971Z"
-            fill={color}
-          />
-        </G>
-        <Defs>
-          <ClipPath id="clip0_3069_67395">
-            <Rect width={16} height={16} fill="white" transform="translate(4 4)" />
-          </ClipPath>
-        </Defs>
+      <Svg width={size} height={size}>
+        <Path
+          fill="#477BFF"
+          d="m24 11.984-7.534 4.333-5.821-3.14c.127-.371.206-.758.206-1.177 0-.418-.079-.837-.222-1.224l5.393-3.093L24 11.984Z"
+        />
+        <Path
+          fill="#003CD6"
+          d="M11.912 24c-3.458 0-6.244-1.13-8.52-3.455C1.11 18.225 0 15.432 0 11.999c0-3.432 1.109-6.241 3.39-8.557C5.67 1.125 8.456 0 11.911 0c2.241 0 4.218.52 6.042 1.589 1.324.781 2.41 1.74 3.289 2.906l-4.52 2.643-.047-.05c-1.219-1.305-2.837-1.967-4.812-1.967-1.845 0-3.42.66-4.684 1.963-1.246 1.267-1.882 2.923-1.882 4.915 0 1.993.633 3.625 1.882 4.915 1.253 1.292 2.828 1.948 4.684 1.948 1.503 0 2.795-.374 3.84-1.11a5.09 5.09 0 0 0 1.06-.931l4.493 2.638c-.88 1.193-1.972 2.167-3.307 2.954C16.11 23.479 14.13 24 11.912 24Z"
+        />
       </Svg>
     </View>
   )
