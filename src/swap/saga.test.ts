@@ -4,7 +4,7 @@ import * as matchers from 'redux-saga-test-plan/matchers'
 import { EffectProviders, StaticProvider, dynamic } from 'redux-saga-test-plan/providers'
 import AppAnalytics from 'src/analytics/AppAnalytics'
 import { SwapEvents } from 'src/analytics/Events'
-import { navigate, navigateHome } from 'src/navigator/NavigationService'
+import { navigate, navigateActivity } from 'src/navigator/NavigationService'
 import { getMultichainFeatures } from 'src/statsig'
 import { swapSubmitSaga } from 'src/swap/saga'
 import { swapCancel, swapError, swapStart, swapSuccess } from 'src/swap/slice'
@@ -439,7 +439,7 @@ describe(swapSubmitSaga, () => {
       expect(mockViemWallet.signTransaction).toHaveBeenCalledTimes(2)
       expect(mockViemWallet.sendRawTransaction).toHaveBeenCalledTimes(2)
       expect(loggerErrorSpy).not.toHaveBeenCalled()
-      expect(navigateHome).toHaveBeenCalledWith()
+      expect(navigateActivity).toHaveBeenCalledWith()
 
       expect(AppAnalytics.track).toHaveBeenCalledTimes(1)
       expect(AppAnalytics.track).toHaveBeenCalledWith(SwapEvents.swap_execute_success, {
@@ -584,7 +584,7 @@ describe(swapSubmitSaga, () => {
     expect(mockViemWallet.signTransaction).toHaveBeenCalledTimes(1)
     expect(mockViemWallet.sendRawTransaction).toHaveBeenCalledTimes(1)
     expect(loggerErrorSpy).not.toHaveBeenCalled()
-    expect(navigateHome).toHaveBeenCalledWith()
+    expect(navigateActivity).toHaveBeenCalledWith()
   })
 
   it('should display the correct standby values for a swap with different decimals', async () => {
@@ -696,7 +696,7 @@ describe(swapSubmitSaga, () => {
     expect(mockViemWallet.signTransaction).toHaveBeenCalledTimes(2)
     expect(mockViemWallet.sendRawTransaction).toHaveBeenCalledTimes(2)
     expect(loggerErrorSpy).not.toHaveBeenCalled()
-    expect(navigateHome).toHaveBeenCalledWith()
+    expect(navigateActivity).toHaveBeenCalledWith()
 
     expect(AppAnalytics.track).toHaveBeenCalledTimes(1)
     expect(AppAnalytics.track).toHaveBeenLastCalledWith(

@@ -9,8 +9,8 @@ import { createRef, MutableRefObject } from 'react'
 import { Platform } from 'react-native'
 import { PincodeType } from 'src/account/reducer'
 import { pincodeTypeSelector } from 'src/account/selectors'
-import { AuthenticationEvents, NavigationEvents, OnboardingEvents } from 'src/analytics/Events'
 import AppAnalytics from 'src/analytics/AppAnalytics'
+import { AuthenticationEvents, NavigationEvents, OnboardingEvents } from 'src/analytics/Events'
 import { Screens } from 'src/navigator/Screens'
 import { StackParamList } from 'src/navigator/types'
 import {
@@ -227,6 +227,13 @@ export function navigateHome(fromModal?: boolean) {
   const timeout = fromModal && Platform.OS === 'ios' ? 500 : 0
   setTimeout(() => {
     navigateClearingStack(Screens.TabNavigator, { initialScreen: Screens.TabHome })
+  }, timeout)
+}
+
+export function navigateActivity(fromModal?: boolean) {
+  const timeout = fromModal && Platform.OS === 'ios' ? 500 : 0
+  setTimeout(() => {
+    navigateClearingStack(Screens.TabNavigator, { initialScreen: Screens.TabActivity })
   }, timeout)
 }
 

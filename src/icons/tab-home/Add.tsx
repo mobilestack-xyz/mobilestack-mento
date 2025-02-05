@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
-const Send = () => (
+const Withdraw = () => (
   <Svg width={48} height={48} fill="none">
     <Path
       fill="url(#a)"
@@ -18,7 +18,7 @@ const Send = () => (
     />
     <Path
       fill="#fff"
-      d="M18.588 29.5 31.415 24l-12.827-5.5-.006 4.278L27.749 24l-9.167 1.222.006 4.278Z"
+      d="M30.415 24.915h-5.5v5.5h-1.833v-5.5h-5.5v-1.833h5.5v-5.5h1.833v5.5h5.5v1.833Z"
     />
     <Defs>
       <LinearGradient id="a" x1={7.029} x2={40.971} y1={24} y2={24} gradientUnits="userSpaceOnUse">
@@ -32,4 +32,4 @@ const Send = () => (
     </Defs>
   </Svg>
 )
-export default Send
+export default Withdraw

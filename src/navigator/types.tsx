@@ -289,7 +289,7 @@ export type StackParamList = {
   [Screens.TabActivity]: {} | undefined
   [Screens.TabWallet]: { activeAssetTab?: AssetTabType } | undefined
   [Screens.TabNavigator]: {
-    initialScreen?: Screens.TabHome | Screens.TabWallet | Screens.TabDiscover
+    initialScreen?: Screens.TabHome | Screens.TabWallet | Screens.TabDiscover | Screens.TabActivity
   }
   [Screens.TokenDetails]: { tokenId: string }
   [Screens.TokenImport]: undefined

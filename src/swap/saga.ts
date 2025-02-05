@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import AppAnalytics from 'src/analytics/AppAnalytics'
 import { SwapEvents } from 'src/analytics/Events'
 import { SwapTimeMetrics, SwapTxsReceiptProperties } from 'src/analytics/Properties'
-import { navigateHome } from 'src/navigator/NavigationService'
+import { navigateActivity } from 'src/navigator/NavigationService'
 import { CANCELLED_PIN_INPUT } from 'src/pincode/authentication'
 import { vibrateError } from 'src/styles/hapticFeedback'
 import { getSwapTxsAnalyticsProperties } from 'src/swap/getSwapTxsAnalyticsProperties'
@@ -254,7 +254,7 @@ export function* swapSubmitSaga(action: PayloadAction<SwapInfo>) {
 
     Logger.debug(TAG, 'Successfully sent swap transaction(s) to the network', txHashes)
 
-    navigateHome()
+    navigateActivity()
     submitted = true
 
     // wait for the tx receipts, so that we can track them
