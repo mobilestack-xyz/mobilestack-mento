@@ -10,13 +10,11 @@ import { FiatExchangeEvents, TabHomeEvents } from 'src/analytics/Events'
 import { AppState } from 'src/app/actions'
 import { appStateSelector, phoneNumberVerifiedSelector } from 'src/app/selectors'
 import BottomSheet, { BottomSheetModalRefType } from 'src/components/BottomSheet'
-import TokenIcon, { IconSize } from 'src/components/TokenIcon'
 import Touchable from 'src/components/Touchable'
 import { ALERT_BANNER_DURATION, DEFAULT_TESTNET, SHOW_TESTNET_BANNER } from 'src/config'
 import { CICOFlow, FiatExchangeFlow } from 'src/fiatExchanges/utils'
 import { refreshAllBalances, visitHome } from 'src/home/actions'
-import Add from 'src/icons/quick-actions/Add'
-import SwapArrows from 'src/icons/SwapArrows'
+import Add from 'src/icons/tab-home/Add'
 import ArrowVertical from 'src/icons/tab-home/ArrowVertical'
 import Send from 'src/icons/tab-home/Send'
 import Swap from 'src/icons/tab-home/Swap'
@@ -164,9 +162,7 @@ function TabHome(_props: Props) {
     <SafeAreaView testID="TabHome" style={styles.container} edges={[]}>
       <FlatCard testID="FlatCard/AddCKES" onPress={onPressAddCKES}>
         <View style={styles.column}>
-          {!!cKESToken && (
-            <TokenIcon token={cKESToken} showNetworkIcon={false} size={IconSize.LARGE} />
-          )}
+          {!!cKESToken && <Add />}
           <Text style={styles.ctaText}>{t('tabHome.addCKES')}</Text>
         </View>
       </FlatCard>
@@ -268,7 +264,7 @@ function AddCKESBottomSheet({
       <View style={styles.bottomSheetContainer}>
         <FlatCard testID="FlatCard/AddFromCUSD" onPress={onPressSwapFromCusd}>
           <View style={styles.row}>
-            <SwapArrows />
+            <Swap />
             <View style={styles.flex}>
               <Text style={styles.bottomSheetCtaText}>
                 {t('tabHome.addCKESBottomSheet.addCKESFromCUSD')}
@@ -281,7 +277,7 @@ function AddCKESBottomSheet({
         </FlatCard>
         <FlatCard testID="FlatCard/PurchaseCKES" onPress={onPressPurchaseCkes}>
           <View style={styles.row}>
-            <Add color={Colors.black} />
+            <Add />
             <View style={styles.flex}>
               <Text style={styles.bottomSheetCtaText}>
                 {t('tabHome.addCKESBottomSheet.purchase')}

@@ -5,7 +5,7 @@ import AppAnalytics from 'src/analytics/AppAnalytics'
 import { FiatExchangeEvents } from 'src/analytics/Events'
 import Button, { BtnSizes, BtnTypes } from 'src/components/Button'
 import { CICOFlow } from 'src/fiatExchanges/utils'
-import AddFunds from 'src/icons/AddFunds'
+import Add from 'src/icons/tab-home/Add'
 import { navigate } from 'src/navigator/NavigationService'
 import { Screens } from 'src/navigator/Screens'
 import colors from 'src/styles/colors'
@@ -36,7 +36,7 @@ export default function GetStarted() {
 
   return (
     <View testID="GetStarted" style={styles.container}>
-      <AddFunds />
+      <Add />
       <Text style={styles.title}>
         {t('getStartedActivity.title', {
           tokenSymbol: cKESToken?.symbol ?? DEFAULT_TOKEN_SYMBOL,

@@ -6,6 +6,7 @@ enum Colors {
   white = '#FFFFFF',
 
   // grays
+  gray6 = '#595F6F',
   gray5 = '#505050',
   gray4 = '#666666',
   gray3 = '#757575',

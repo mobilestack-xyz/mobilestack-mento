@@ -72,7 +72,7 @@ export default function TokenIcon({
     IconSizeToStyle[size]
 
   return (
-    <View testID={testID} style={[styles.defaultViewStyle, viewStyle]}>
+    <View testID={testID} style={[viewStyle]}>
       {token.imageUrl ? (
         <FastImage
           source={{
@@ -144,5 +144,4 @@ const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
   },
-  defaultViewStyle: { borderColor: colors.black, borderWidth: 1, borderRadius: 20 },
 })
